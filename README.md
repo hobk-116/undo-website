@@ -2,6 +2,8 @@
 
 Website giới thiệu và mua sắm demo cho cốc UnDo, dùng HTML, CSS và JavaScript thuần. Website không cần bước build hoặc dependency để chạy.
 
+Website production: [undo-website-eight.vercel.app](https://undo-website-eight.vercel.app/).
+
 ## Hướng dẫn cho LLM và agent
 
 Mọi LLM, coding agent và worker phải đọc đầy đủ [AGENTS.md](AGENTS.md) trước khi phân tích, sửa hoặc kiểm tra dự án, rồi tuân thủ các quy tắc trong file. Khi giao việc cho worker, truyền các quy tắc liên quan vào yêu cầu. README không thay thế AGENTS.md.
@@ -69,6 +71,8 @@ Nhánh kiểm tra khi tắt JavaScript hiện dùng cố định cổng 3667. Sc
 ## Git và triển khai
 
 Mã nguồn public: [hobk-116/undo-website](https://github.com/hobk-116/undo-website).
+
+Vercel kết nối với repository GitHub và tự triển khai khi push. Bản production dùng [undo-website-eight.vercel.app](https://undo-website-eight.vercel.app/).
 
 Vercel dùng cấu hình HTML tĩnh trong `vercel.json`. `.vercelignore` chỉ cho phép tải `index.html`, các stylesheet và `asset/` lên hosting. `asset_old/` và tài liệu vẫn nằm trong GitHub, không thuộc bộ file triển khai.
 

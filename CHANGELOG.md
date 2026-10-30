@@ -7,7 +7,8 @@ Ghi thay đổi theo ngày. Dự án chưa gán phiên bản phát hành.
 ### Triển khai
 
 - Tạo repository public `hobk-116/undo-website`.
-- Chuẩn bị triển khai HTML tĩnh lên Vercel bằng `vercel.json`.
+- Triển khai production lên `https://undo-website-eight.vercel.app/`, cấu hình HTML tĩnh bằng `vercel.json`.
+- Kết nối GitHub với Vercel để tự triển khai khi push.
 - Thêm `.vercelignore` để chỉ tải HTML, CSS và ảnh đang dùng; loại `.vercel/` khỏi Git.
 
 ### Tài liệu và quản lý mã nguồn
