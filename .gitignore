@@ -1,0 +1,35 @@
+# Hệ điều hành và editor
+.DS_Store
+._*
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Bí mật và cấu hình cục bộ
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependency và file tạm
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.log
+tmp/
+temp/
+coverage/
+
+# Giữ script kiểm tra và nhật ký thiết kế
+.hallmark/*
+!.hallmark/check-site.mjs
+!.hallmark/log.json
+
+# Liên kết dự án và cấu hình Vercel cục bộ
+.vercel/

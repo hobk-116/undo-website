@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 920" role="img" aria-label="Cốc Undo màu SAGE GREEN">
+<defs>
+  <linearGradient id="body" x1="0" x2="1"><stop offset="0" stop-color="#6f8769"/><stop offset=".15" stop-color="#899c7f"/><stop offset=".48" stop-color="#899c7f"/><stop offset=".82" stop-color="#899c7f"/><stop offset="1" stop-color="#4d684f"/></linearGradient>
+  <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#969e9b"/><stop offset=".13" stop-color="#f7fbf7"/><stop offset=".52" stop-color="#9baba4"/><stop offset=".72" stop-color="#f2f5f2"/><stop offset="1" stop-color="#6c7973"/></linearGradient>
+  <linearGradient id="handle" x1="0" x2="1"><stop stop-color="#4d684f"/><stop offset=".5" stop-color="#899c7f"/><stop offset="1" stop-color="#6f8769"/></linearGradient>
+  <filter id="shadow" x="-50%" y="-100%" width="200%" height="300%"><feGaussianBlur stdDeviation="18"/></filter>
+  <filter id="tinyshadow"><feGaussianBlur stdDeviation="4"/></filter>
+</defs>
+<rect width="800" height="920" fill="#f3f5f0"/>
+<circle cx="646" cy="204" r="192" fill="white" opacity=".25"/>
+<circle cx="80" cy="770" r="250" fill="white" opacity=".23"/>
+<ellipse cx="402" cy="754" rx="222" ry="31" fill="#615b50" opacity=".16" filter="url(#shadow)"/>
+<!-- handle exterior and cavity -->
+<path d="M548 314 C640 300 670 353 666 430 L664 521 C659 598 624 632 541 620" fill="none" stroke="#4d684f" stroke-width="60" stroke-linecap="round"/>
+<path d="M549 323 C622 310 645 360 640 432 L638 516 C636 570 611 599 549 594" fill="none" stroke="url(#handle)" stroke-width="36" stroke-linecap="round"/>
+<path d="M551 342 C605 328 618 364 614 434 L612 511 C610 553 593 567 552 570" fill="none" stroke="#f3f5f0" stroke-width="16" stroke-linecap="round"/>
+<!-- body -->
+<path d="M251 289 Q246 286 246 305 L254 683 Q260 744 401 752 Q544 744 547 683 L554 303 Q554 288 543 289 Z" fill="url(#body)"/>
+<path d="M271 327 L282 678 Q286 713 319 725" fill="none" stroke="white" stroke-width="9" opacity=".14" stroke-linecap="round"/>
+<path d="M537 338 L532 680 Q529 713 508 726" fill="none" stroke="#1c2320" stroke-width="7" opacity=".13" stroke-linecap="round"/>
+<!-- steel lip -->
+<path d="M236 290 L561 290 L559 314 Q400 333 240 313 Z" fill="url(#metal)"/>
+<ellipse cx="399" cy="285" rx="163" ry="28" fill="url(#metal)"/>
+<ellipse cx="399" cy="283" rx="141" ry="19" fill="#464d48"/>
+<ellipse cx="398" cy="282" rx="126" ry="12" fill="#737e77"/>
+<path d="M340 270 Q400 248 463 269 L463 293 Q400 310 340 293 Z" fill="#a2aaa5"/>
+<path d="M354 268 Q401 253 453 268 L453 281 L354 282 Z" fill="#d5dcd7"/>
+<rect x="379" y="232" width="38" height="42" rx="12" fill="#899c7f"/>
+<path d="M387 237 Q405 231 410 243" stroke="white" stroke-width="6" opacity=".32" fill="none"/>
+<g text-anchor="middle"><text x="399" y="539" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="57" fill="#eef2ed" letter-spacing="-3">Undo</text><path d="M423 547 Q440 561 457 546" stroke="#d59e70" stroke-width="7" fill="none" stroke-linecap="round"/></g>
+<text x="54" y="78" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#506357" letter-spacing="4">UNDO / EVERYDAY</text>
+<text x="54" y="835" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#506357" letter-spacing="3">SAGE GREEN</text>
+<text x="745" y="835" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#506357">01 / 04</text>
+</svg>

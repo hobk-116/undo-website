@@ -1,0 +1,42 @@
+[
+  {
+    "mode": "redesign",
+    "depth": "restyle",
+    "scope": "page",
+    "shape": "Catalogue (kept)",
+    "theme": "garden",
+    "axes": "light/roman-serif/chromatic-green",
+    "hero": "Banner (kept)",
+    "nav": "three-part bar (kept)",
+    "footer": "index columns (kept)",
+    "imagery": "original user assets only",
+    "photos": [],
+    "entry": "index.html",
+    "fingerprint": "existing ecommerce layout retained",
+    "sections": [
+      "hero",
+      "feature strip",
+      "collection",
+      "design",
+      "colours",
+      "story",
+      "policy",
+      "FAQ",
+      "newsletter",
+      "footer"
+    ],
+    "signature": "four Undo mug colours on oat paper",
+    "waived": [
+      "59",
+      "85"
+    ],
+    "prompt": "Restyle Undo with Hallmark Garden, deslop-ui and ponytail. Keep layout, existing assets and all original features.",
+    "verification": {
+      "feature_checks": 34,
+      "floor_fail": 0,
+      "open_reflex": 0,
+      "review": "in-thread",
+      "render": "5 screenshots"
+    }
+  }
+]

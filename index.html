@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#183e30" />
+<meta name="description" content="Undo - Cốc chống đổ với thiết kế tối giản. Spill Less. Live More." />
+<title>Undo | Spill Less. Live More.</title>
+<link rel="icon" type="image/png" href="asset/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Vollkorn:wght@600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip" href="#main">Bỏ qua đến nội dung</a>
+<div class="announce">Miễn phí vận chuyển dự kiến cho đơn từ 399.000đ</div>
+<header class="header">
+  <div class="nav">
+    <button class="icon-btn hamburger" id="menuToggle" aria-label="Mở menu" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="brand" href="#top" aria-label="Undo - Trang chủ"><img src="asset/logo.png" alt="Undo"/></a>
+    <nav class="menu" aria-label="Điều hướng chính"><a href="#collection">Sản phẩm</a><a href="#why">Điểm nổi bật</a><a href="#story">Về Undo</a><a href="#policy">Chính sách</a></nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="searchToggle" aria-label="Tìm kiếm" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.1"/><path d="m16.1 16.1 5 5"/></svg></button>
+      <button class="icon-btn" id="wishlistToggle" aria-label="Sản phẩm yêu thích" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.7 8.2c0 5.2-8.7 11.1-8.7 11.1S3.3 13.4 3.3 8.2a4.7 4.7 0 0 1 8.7-2.4 4.7 4.7 0 0 1 8.7 2.4Z"/></svg></button>
+      <button class="icon-btn" id="cartToggle" aria-label="Mở giỏ hàng"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7h18l-1.6 13H4.6L3 7ZM8 8V5a4 4 0 0 1 8 0v3"/></svg><span class="counter" id="cartCount">0</span></button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Điều hướng điện thoại"><a href="#collection">Sản phẩm</a><a href="#why">Điểm nổi bật</a><a href="#story">Về Undo</a><a href="#policy">Chính sách</a></nav>
+</header>
+<div class="searchbox" id="searchBox"><div class="wrap"><svg aria-hidden="true" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></svg><input id="searchInput" type="search" placeholder="Tìm cốc Undo, màu sắc..." aria-label="Tìm kiếm sản phẩm"/><button class="close" id="closeSearch" aria-label="Đóng tìm kiếm">×</button></div><div class="wrap"><p>Gợi ý: Sage Green, Oat Cream, Blush Pink, Midnight Black</p></div></div>
+<main id="main">
+  <section id="top" aria-label="Bộ sưu tập Undo">
+    <div class="hero-photo"><img src="asset/hero.jpg" alt="Bộ sưu tập cốc chống đổ Undo màu kem, xanh sage và hồng, slogan Spill Less. Live More." fetchpriority="high" /></div>
+    <div class="hero-foot"><div class="wrap"><div class="hero-intro"><h1>Một ngày không tràn đổ.</h1><p>Cốc chống đổ Undo cho bàn học và góc làm việc.</p></div><div class="actions"><a class="btn" href="#collection">Chọn cốc</a><a class="btn secondary" href="#why">Xem thiết kế</a></div></div></div>
+  </section>
+  <div class="short-features"><div class="wrap feature-list">
+    <div class="short-feature"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m8 5 10 12M14 4l6 8M4 19c3 2 7 2 10 0"/></svg>Hạn chế đổ nghiêng</div>
+    <div class="short-feature"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v11m0 0a4 4 0 1 0 4 4c0-1.6-.6-2.7-2-4V5a2 2 0 0 0-4 0v9"/></svg>Thiết kế giữ nhiệt</div>
+    <div class="short-feature"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m6 8 6-5 6 5v11l-6 3-6-3zM6 8l6 4 6-4M12 12v10"/></svg>Đơn giản, dễ sử dụng</div>
+  </div></div>
+  <section class="section" id="collection"><div class="wrap">
+    <div class="section-head"><div><h2 class="section-title">Bộ sưu tập Undo</h2><p class="subtext">Một thiết kế. Bốn gam màu cho mọi cá tính.</p></div><span class="section-link">Undo Everyday Mug / 400 ml*</span></div>
+    <div class="filters" id="filters"><button class="chip active" data-filter="all">Tất cả</button><button class="chip" data-filter="sage">Xanh Sage</button><button class="chip" data-filter="cream">Kem</button><button class="chip" data-filter="blush">Hồng</button><button class="chip" data-filter="onyx">Đen</button><span class="result-count" id="resultCount">4 sản phẩm</span></div>
+    <div class="products" id="productGrid" aria-live="polite"><article class="product"><div class="product-art"><a href="asset/sage.webp"><img src="asset/sage.webp" alt="Cốc Undo Xanh Sage" loading="lazy" /></a></div><div class="product-info"><div class="product-kicker">Cốc chống đổ / 400 ml*</div><span class="product-name">Undo Everyday Mug - Sage Green</span><div class="price">249.000đ</div><div class="color-row">Xanh Sage</div></div></article><article class="product"><div class="product-art"><a href="asset/cream.webp"><img src="asset/cream.webp" alt="Cốc Undo Kem" loading="lazy" /></a></div><div class="product-info"><div class="product-kicker">Cốc chống đổ / 400 ml*</div><span class="product-name">Undo Everyday Mug - Oat Cream</span><div class="price">249.000đ</div><div class="color-row">Kem</div></div></article><article class="product"><div class="product-art"><a href="asset/blush.webp"><img src="asset/blush.webp" alt="Cốc Undo Hồng phấn" loading="lazy" /></a></div><div class="product-info"><div class="product-kicker">Cốc chống đổ / 400 ml*</div><span class="product-name">Undo Everyday Mug - Blush Pink</span><div class="price">249.000đ</div><div class="color-row">Hồng phấn</div></div></article><article class="product"><div class="product-art"><a href="asset/onyx.webp"><img src="asset/onyx.webp" alt="Cốc Undo Đen" loading="lazy" /></a></div><div class="product-info"><div class="product-kicker">Cốc chống đổ / 400 ml*</div><span class="product-name">Undo Everyday Mug - Midnight Black</span><div class="price">249.000đ</div><div class="color-row">Đen</div></div></article></div><noscript><p class="fineprint">Bật JavaScript để lọc màu, lưu yêu thích và dùng giỏ hàng demo.</p></noscript>
+    <p class="fineprint">*Dung tích, chất liệu và tính năng là thông số dự kiến cho sản phẩm mẫu; cần xác nhận trước khi bán chính thức.</p>
+  </div></section>
+  <section class="editorial" id="why"><div class="editorial-row">
+    <div class="editorial-image"><img src="asset/desk.jpg" loading="lazy" alt="Undo trên bàn làm việc cạnh laptop và sổ tay" /></div>
+    <div class="editorial-content"><h2>Thiết kế của Undo</h2><p>Đôi khi, chỉ một cú chạm nhẹ cũng đủ khiến mọi thứ đảo lộn. Undo được lên ý tưởng để chiếc cốc có thể đứng vững hơn trong những khoảnh khắc bận rộn.</p><ul class="benefits"><li>Đế chống nghiêng cho bề mặt phẳng, nhẵn</li><li>Thân cốc cách nhiệt, dùng cho nóng và lạnh</li><li>Phong cách tối giản, hợp mọi góc bàn</li></ul><a href="#collection" class="btn">Chọn cốc của bạn</a></div>
+  </div></section>
+  <section class="color-promo"><div class="wrap color-layout"><div class="color-copy"><h2>Bốn màu cốc</h2><p>Nhẹ nhàng hay cá tính? Chọn chiếc Undo hợp với góc làm việc và phong cách mỗi ngày.</p><div class="color-line" aria-label="Bốn màu: kem, xanh sage, hồng, đen"><span style="background:var(--mug-cream)"></span><span style="background:var(--mug-sage)"></span><span style="background:var(--mug-blush)"></span><span style="background:var(--mug-onyx)"></span></div><a href="#collection" class="btn secondary">Xem bốn màu</a></div><div class="color-pic"><img src="asset/collection.jpg" loading="lazy" alt="Bốn phiên bản màu cốc Undo từ kem, xanh, hồng đến đen" /></div></div></section>
+  <section class="story" id="story"><div class="wrap story-inner"><div class="story-content"><h2>Câu chuyện Undo</h2><p>Undo ra đời từ một ý tưởng rất đơn giản: những rắc rối nhỏ không nên làm gián đoạn cả một ngày. Chúng mình tin rằng thiết kế đẹp nhất là thiết kế khiến cuộc sống thuận tiện hơn.</p><p>Từ bàn học đến phòng họp, Undo muốn đồng hành cùng những phút giây bạn tập trung làm điều mình thích.</p><a href="#collection" class="btn secondary">Xem sản phẩm</a></div><div class="story-image"><img src="asset/story.jpg" loading="lazy" alt="Cốc Undo xanh sage được cầm trên tay"/></div></div></section>
+  <section class="policy-wrap" id="policy"><div class="wrap"><div class="policy-grid">
+    <div class="policy-item"><div class="policy-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 7h12v10H2zM14 10h4l4 4v3h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></div><div class="policy-title">Giao hàng toàn quốc</div><p class="policy-desc">Miễn phí từ 399.000đ</p></div>
+    <div class="policy-item"><div class="policy-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2 4 6v6c0 5 3 8 8 10 5-2 8-5 8-10V6z"/><path d="m8 12 3 3 5-6"/></svg></div><div class="policy-title">Bảo hành dự kiến</div><p class="policy-desc">6 tháng lỗi sản xuất</p></div>
+    <div class="policy-item"><div class="policy-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9V4h5M3 4a9 9 0 1 1-1 11"/><path d="M12 7v5l4 2"/></svg></div><div class="policy-title">Đổi trả dự kiến</div><p class="policy-desc">Trong 7 ngày nếu lỗi / giao sai</p></div>
+    <div class="policy-item"><div class="policy-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16v12H8l-4 4z"/><path d="M8 10h8M8 13h5"/></svg></div><div class="policy-title">Hỗ trợ thân thiện</div><p class="policy-desc">Nhắn tin để được tư vấn</p></div>
+  </div></div></section>
+  <section class="section" id="faq"><div class="wrap faq-grid"><div><h2>Hỏi Undo<br/>một chút nhé?</h2><p class="subtext">Thông tin dự kiến trong bản demo.</p></div><div>
+    <details><summary>Điểm đặc biệt của cốc Undo là gì?</summary><p>Ý tưởng Undo kết hợp đế chống nghiêng với kiểu dáng tối giản để hạn chế những cú đổ bất ngờ trên bàn. Hiệu quả thực tế còn phụ thuộc bề mặt và cần được thử nghiệm trên sản phẩm thật.</p></details>
+    <details><summary>Undo có dùng được cho đồ uống nóng và lạnh không?</summary><p>Bản thiết kế dự kiến dùng thân cốc giữ nhiệt cho đồ uống nóng hoặc lạnh. Thời gian giữ nhiệt chính xác sẽ được công bố sau khi kiểm thử.</p></details>
+    <details><summary>Đế chống nghiêng dùng trên bề mặt nào?</summary><p>Phù hợp nhất với bàn phẳng, sạch và nhẵn. Không nên dựa hoàn toàn vào khả năng chống đổ trên bề mặt gồ ghề, có khăn trải bàn hoặc khi mang đi xa.</p></details>
+    <details><summary>Chính sách đổi trả và bảo hành ra sao?</summary><p>Chính sách đề xuất: đổi trả trong 7 ngày khi sản phẩm lỗi hoặc giao sai, bảo hành 6 tháng cho lỗi sản xuất. Nội dung cần được xác nhận trước khi vận hành cửa hàng thật.</p></details>
+  </div></div></section>
+  <section class="newsletter"><div class="wrap newsletter-inner"><div><h2>Ghé Undo, nhận điều hay.</h2><p>Đăng ký để xem thông tin sản phẩm và các bộ sưu tập mới. (Demo, chưa lưu email)</p></div><form id="newsletterForm"><label class="newsletter-field">Email của bạn<input type="email" placeholder="Email của bạn" aria-label="Email của bạn" required/></label><button type="submit">Đăng ký</button></form></div></section>
+</main>
+<footer class="footer"><div class="wrap"><div class="footer-cols">
+  <div class="footer-brand"><a class="brand" href="#top"><img src="asset/logo.png" alt="Undo" /></a><p>Spill Less. Live More.<br/>Cốc chống đổ cho một ngày tự tin hơn.</p><div class="demo-label">Website mẫu của dự án sinh viên</div></div>
+  <div><h3>Khám phá</h3><a href="#collection">Bộ sưu tập</a><a href="#why">Tính năng</a><a href="#story">Câu chuyện thương hiệu</a></div>
+  <div><h3>Hỗ trợ</h3><a href="#policy">Giao hàng & đổi trả</a><a href="#faq">Câu hỏi thường gặp</a><a href="#policy">Chính sách bảo hành</a></div>
+  <div><h3>Theo dõi Undo</h3><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook (liên kết mẫu)</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram (liên kết mẫu)</a><a href="mailto:hello@example.com">Email (thay khi ra mắt)</a></div>
+</div><div class="footer-bottom"><span>© 2026 Undo. Dự án website mẫu, không nhận đơn hàng thật.</span><span>Spill Less. Live More.</span></div></div></footer>
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Giỏ hàng" aria-hidden="true" inert><div class="drawer-head"><h2>Giỏ hàng của bạn <span id="drawerCount">(0)</span></h2><button class="close" data-close aria-label="Đóng giỏ hàng">×</button></div><div class="drawer-body" id="cartItems"></div><div class="drawer-foot" id="cartFooter"></div></aside>
+<div class="modal" id="productModal" role="dialog" aria-modal="true" aria-label="Chi tiết cốc Undo" aria-hidden="true" inert><button class="modal-close" data-close aria-label="Đóng chi tiết">×</button><div id="productModalContent"></div></div>
+<div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-label="Đặt hàng demo" aria-hidden="true" inert><button class="modal-close" data-close aria-label="Đóng đặt hàng">×</button><div class="modal-checkout"><h2>Thông tin đặt hàng</h2><p>Điền thông tin để xem quy trình đặt hàng minh họa.</p><div id="orderResult" hidden></div><form id="checkoutForm"><div class="form-row"><label class="field">Họ và tên<input type="text" name="name" required autocomplete="name" placeholder="Nguyễn An" /></label><label class="field">Số điện thoại<input type="tel" name="phone" minlength="9" required placeholder="09xxxxxxxx" /></label></div><label class="field">Địa chỉ giao hàng<input type="text" name="address" required placeholder="Số nhà, đường, quận/huyện, tỉnh/thành" /></label><label class="field">Ghi chú (không bắt buộc)<textarea name="note" placeholder="Màu sắc hoặc thời gian nhận hàng..."></textarea></label><label class="field">Phương thức thanh toán<select name="payment"><option>Thanh toán khi nhận hàng (COD) - minh hoạ</option></select></label><div class="subtotal"><span>Tạm tính</span><span id="checkoutAmount">0đ</span></div><div class="checkout-note">Đây chỉ là giao diện mẫu phục vụ dự án Undo. Không có thanh toán hoặc gửi đơn thực tế. Không lưu thông tin cá nhân trên máy chủ.</div><button class="btn" type="submit">Xác nhận đơn demo</button></form></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(()=>{
+'use strict';
+const products=[
+{id:'sage',name:'Undo Everyday Mug - Sage Green',short:'Sage Green',vi:'Xanh Sage',price:249000,img:'asset/sage.webp',hex:'var(--mug-sage)',tags:'sage green xanh la thanh lịch'},
+{id:'cream',name:'Undo Everyday Mug - Oat Cream',short:'Oat Cream',vi:'Kem',price:249000,img:'asset/cream.webp',hex:'var(--mug-cream)',tags:'oat cream kem trang be'},
+{id:'blush',name:'Undo Everyday Mug - Blush Pink',short:'Blush Pink',vi:'Hồng phấn',price:249000,img:'asset/blush.webp',hex:'var(--mug-blush)',tags:'blush pink hong phan'},
+{id:'onyx',name:'Undo Everyday Mug - Midnight Black',short:'Midnight Black',vi:'Đen',price:249000,img:'asset/onyx.webp',hex:'var(--mug-onyx)',tags:'midnight black den'}
+];
+const $=id=>document.getElementById(id);
+const money=n=>n.toLocaleString('vi-VN')+'đ';
+const iconHeart='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 8.2c0 5.2-8.7 11.1-8.7 11.1S3.3 13.4 3.3 8.2a4.7 4.7 0 0 1 8.7-2.4 4.7 4.7 0 0 1 8.7 2.4Z"/></svg>';
+function read(key,fallback){try{return JSON.parse(localStorage.getItem('undo_'+key))??fallback}catch(e){return fallback}}
+let cart=read('cart',[]).filter(it=>products.some(p=>p.id===it.id)&&Number.isInteger(it.qty)&&it.qty>0);
+let wishlist=read('wishlist',[]).filter(id=>products.some(p=>p.id===id));
+let filter='all',search='',favOnly=false,active='',returnFocus=null;
+const pageRegions=document.querySelectorAll('body>.announce,body>header,body>.searchbox,body>main,body>footer');
+function save(){try{localStorage.setItem('undo_cart',JSON.stringify(cart));localStorage.setItem('undo_wishlist',JSON.stringify(wishlist))}catch(e){}}
+let toastTimeout;
+function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>$('toast').classList.remove('show'),2900)}
+function open(id){const trigger=active?returnFocus:document.activeElement;close();returnFocus=trigger;active=id;pageRegions.forEach(el=>el.inert=true);$('overlay').classList.add('open');$(id).classList.add('open');$(id).setAttribute('aria-hidden','false');$(id).inert=false;document.body.classList.add('noscroll');setTimeout(()=>{const el=$(id).querySelector('.modal-close,.close');if(el)el.focus()},60)}
+function close(){const wasOpen=Boolean(active);active='';pageRegions.forEach(el=>el.inert=false);$('overlay').classList.remove('open');document.querySelectorAll('.drawer,.modal').forEach(el=>{el.classList.remove('open');el.setAttribute('aria-hidden','true');el.inert=true});document.body.classList.remove('noscroll');if(wasOpen&&returnFocus?.isConnected)returnFocus.focus()}
+document.addEventListener('keydown',e=>{
+ if(e.key!=='Tab'||!active)return;
+ const nodes=[...$(active).querySelectorAll('button:not(:disabled),a[href],input:not(:disabled),select,textarea,[tabindex="0"]')].filter(el=>el.getClientRects().length);
+ const first=nodes[0],last=nodes[nodes.length-1];
+ if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus()}
+ else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus()}
+});
+$('overlay').addEventListener('click',close);document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape'){close();closeSearch();closeMobile()}});
+function renderProducts(){let items=products.filter(p=>(filter==='all'||p.id===filter)&&(!favOnly||wishlist.includes(p.id))&&(!search||(p.name+' '+p.vi+' '+p.tags).toLocaleLowerCase('vi').includes(search)));
+$('productGrid').innerHTML=items.length?items.map(p=>`<article class="product"><div class="product-art"><button type="button" class="fav ${wishlist.includes(p.id)?'active':''}" data-fav="${p.id}" aria-label="${wishlist.includes(p.id)?'Bỏ yêu thích':'Yêu thích'} ${p.vi}" aria-pressed="${wishlist.includes(p.id)}">${iconHeart}</button><a href="#product-${p.id}" data-view="${p.id}" aria-label="Xem ${p.name}"><img src="${p.img}" loading="lazy" alt="Cốc chống đổ Undo phiên bản màu ${p.vi}"/></a><button class="quick" data-view="${p.id}">Xem nhanh</button></div><div class="product-info"><div class="product-kicker">Cốc chống đổ / 400 ml*</div><a class="product-name" href="#product-${p.id}" data-view="${p.id}" aria-label="${p.name}">${p.short}</a><div class="price">${money(p.price)}</div><div class="color-row"><span class="swatch" style="background:${p.hex}"></span> ${p.vi}</div><button class="mini-add" data-add="${p.id}">Thêm vào giỏ hàng</button></div></article>`).join(''):'<div class="empty-state"><strong>Chưa tìm thấy sản phẩm phù hợp.</strong><p>Hãy thử màu khác hoặc xóa từ khóa tìm kiếm.</p><button class="btn small" id="clearFilter">Xem tất cả</button></div>';
+$('resultCount').textContent=`${items.length} sản phẩm${favOnly?' yêu thích':''}`;
+let clear=$('clearFilter');if(clear)clear.addEventListener('click',()=>{filter='all';favOnly=false;search='';$('searchInput').value='';$('wishlistToggle').setAttribute('aria-pressed','false');document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('active',b.dataset.filter==='all'));renderProducts()})}
+function add(id,qty=1){const found=cart.find(it=>it.id===id);if(found)found.qty+=qty;else cart.push({id,qty});save();renderCart();toast('Đã thêm cốc Undo vào giỏ hàng')}
+function renderCart(){const n=cart.reduce((sum,p)=>sum+p.qty,0);$('cartCount').textContent=n;$('drawerCount').textContent=`(${n})`;const total=cart.reduce((sum,it)=>sum+(products.find(p=>p.id===it.id)?.price||0)*it.qty,0);
+$('cartItems').innerHTML=cart.length?cart.map(it=>{const p=products.find(pp=>pp.id===it.id);return `<div class="cart-item"><img src="${p.img}" alt="${p.vi}"/><div><h3>${p.name}</h3><p>400 ml, ${p.vi}</p><strong>${money(p.price)}</strong><div class="qty" aria-label="Số lượng"><button data-dec="${p.id}" aria-label="Giảm số lượng ${p.vi}">−</button><span>${it.qty}</span><button data-inc="${p.id}" aria-label="Tăng số lượng ${p.vi}">+</button></div></div><button class="remove" data-remove="${p.id}" aria-label="Xóa ${p.vi}">×</button></div>`}).join(''):'<div class="cart-empty"><b>Giỏ hàng đang trống</b><p>Chiếc cốc Undo đầu tiên đang chờ bạn đó.</p><button class="btn small" id="shopAgain">Xem sản phẩm</button></div>';
+$('cartFooter').innerHTML=cart.length?`<div class="subtotal"><span>Tạm tính</span><span>${money(total)}</span></div><p class="fineprint">${total>=399000?'Đơn hàng đủ điều kiện miễn phí vận chuyển dự kiến.':'Mua thêm '+money(399000-total)+' để đạt mức miễn phí vận chuyển dự kiến.'}</p><button class="btn" id="checkoutBtn">Đặt hàng demo</button><p class="fineprint">Chưa kết nối thanh toán hoặc dịch vụ giao hàng</p>`:'';
+const again=$('shopAgain');if(again)again.addEventListener('click',()=>{close();$('collection').scrollIntoView({behavior:'smooth'})});const checkout=$('checkoutBtn');if(checkout)checkout.addEventListener('click',()=>{$('checkoutForm').hidden=false;$('orderResult').hidden=true;$('checkoutAmount').textContent=money(total);open('checkoutModal')})}
+function viewProduct(id){let p=products.find(x=>x.id===id);if(!p)return;
+$('productModalContent').innerHTML=`<div class="modal-product"><img id="modalImg" src="${p.img}" alt="Cốc Undo ${p.vi}"/><div class="modal-details"><h2>Undo Everyday Mug</h2><div class="price">${money(p.price)}</div><p>Cốc chống đổ, thiết kế tối giản để sử dụng hằng ngày.</p><div class="small-hr"></div><strong >Màu sắc: <span id="selectedColor">${p.vi}</span></strong><div class="modal-color">${products.map(v=>`<button data-color="${v.id}" class="${v.id===id?'selected':''}" style="background:${v.hex}" aria-label="Chọn màu ${v.vi}" aria-pressed="${v.id===id}"></button>`).join('')}</div><strong >Số lượng</strong><div class="qty"><button id="modalDec" aria-label="Giảm số lượng">−</button><span id="modalQty">1</span><button id="modalInc" aria-label="Tăng số lượng">+</button></div><button class="btn" id="modalAdd">Thêm vào giỏ hàng</button><p class="detail-note">*Dung tích 400 ml, đế chống nghiêng và chất liệu giữ nhiệt là các thông số dự kiến; cần xác nhận với nhà cung cấp.</p></div></div>`;
+let selected=id,q=1;
+$('modalDec').addEventListener('click',()=>{$('modalQty').textContent=q=Math.max(1,q-1)});$('modalInc').addEventListener('click',()=>{$('modalQty').textContent=q=Math.min(99,q+1)});
+$('productModalContent').querySelectorAll('[data-color]').forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.color;let pick=products.find(x=>x.id===selected);$('modalImg').src=pick.img;$('modalImg').alt='Cốc Undo '+pick.vi;$('selectedColor').textContent=pick.vi;document.querySelectorAll('[data-color]').forEach(c=>{c.classList.toggle('selected',c.dataset.color===selected);c.setAttribute('aria-pressed',String(c.dataset.color===selected))})}));
+$('modalAdd').addEventListener('click',()=>{add(selected,q);open('cartDrawer')});open('productModal')}
+document.addEventListener('click',e=>{let b=e.target.closest('[data-view],[data-add],[data-fav],[data-inc],[data-dec],[data-remove]');if(!b)return;e.preventDefault();if(b.dataset.view)viewProduct(b.dataset.view);if(b.dataset.add)add(b.dataset.add);if(b.dataset.fav){let id=b.dataset.fav;wishlist=wishlist.includes(id)?wishlist.filter(v=>v!==id):[...wishlist,id];save();renderProducts();toast(wishlist.includes(id)?'Đã lưu vào yêu thích':'Đã bỏ khỏi yêu thích')}
+if(b.dataset.inc||b.dataset.dec||b.dataset.remove){let id=b.dataset.inc||b.dataset.dec||b.dataset.remove;let it=cart.find(x=>x.id===id);if(!it)return;if(b.dataset.remove)cart=cart.filter(x=>x.id!==id);else{it.qty+=b.dataset.inc?1:-1;if(it.qty<=0)cart=cart.filter(x=>x.id!==id)}save();renderCart()}});
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;favOnly=false;$('wishlistToggle').setAttribute('aria-pressed','false');document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c===b));renderProducts()}));
+$('wishlistToggle').addEventListener('click',()=>{favOnly=!favOnly;$('wishlistToggle').setAttribute('aria-pressed',String(favOnly));filter='all';document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('active',b.dataset.filter==='all'));renderProducts();$('collection').scrollIntoView({behavior:'smooth'});if(favOnly&&!wishlist.length)toast('Chạm vào biểu tượng ♡ trên sản phẩm để lưu yêu thích')});
+$('cartToggle').addEventListener('click',()=>{renderCart();open('cartDrawer')});
+function positionSearch(){if($('searchBox').classList.contains('open'))$('searchBox').style.top=document.querySelector('.header').getBoundingClientRect().bottom+'px'}
+window.addEventListener('scroll',positionSearch,{passive:true});window.addEventListener('resize',positionSearch);
+function closeSearch(){$('searchBox').classList.remove('open');$('searchToggle').setAttribute('aria-expanded','false')}
+$('searchToggle').addEventListener('click',()=>{let isOpen=$('searchBox').classList.toggle('open');$('searchToggle').setAttribute('aria-expanded',String(isOpen));if(isOpen){positionSearch();$('searchInput').focus()}else closeSearch()});$('closeSearch').addEventListener('click',closeSearch);
+$('searchInput').addEventListener('input',e=>{search=e.target.value.toLocaleLowerCase('vi').trim();filter='all';document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('active',b.dataset.filter==='all'));renderProducts();if(search)$('collection').scrollIntoView({behavior:'smooth'})});
+function closeMobile(){$('mobileMenu').classList.remove('open');$('menuToggle').setAttribute('aria-expanded','false')}
+$('menuToggle').addEventListener('click',()=>{let on=$('mobileMenu').classList.toggle('open');$('menuToggle').setAttribute('aria-expanded',String(on))});$('mobileMenu').querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobile));
+$('newsletterForm').addEventListener('submit',e=>{e.preventDefault();toast('Cảm ơn bạn! Đây là form minh họa, email chưa được lưu.');e.target.reset()});
+$('checkoutForm').addEventListener('submit',e=>{e.preventDefault();if(!cart.length)return;const form=new FormData(e.target);const name=String(form.get('name')||'').trim();if(!name)return;const amount=cart.reduce((sum,it)=>sum+(products.find(p=>p.id===it.id)?.price||0)*it.qty,0);$('orderResult').hidden=false;$('orderResult').className='modal-alert';$('orderResult').innerHTML=`<b>Đã mô phỏng đặt hàng thành công</b><p>Cảm ơn <b>${escapeHtml(name)}</b> đã thử trải nghiệm. Tổng tiền minh họa: <b>${money(amount)}</b>.</p><p>Không có đơn hàng thực tế được gửi đi. Bạn có thể tiếp tục tham quan website.</p><button type="button" class="btn small" id="continueShop">Tiếp tục xem sản phẩm</button>`;$('checkoutForm').hidden=true;cart=[];save();renderCart();$('continueShop').addEventListener('click',()=>{close();$('collection').scrollIntoView({behavior:'smooth'})})});
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+renderProducts();renderCart();
+})();
+</script>
+</body>
+</html>
