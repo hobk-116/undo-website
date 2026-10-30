@@ -1,6 +1,9 @@
 # Chỉ tải các file chạy website lên Vercel
 /*
 !index.html
+!giao-hang-doi-tra.html
+!cau-hoi-thuong-gap.html
+!bao-hanh.html
 !styles.css
 !base.css
 !tokens.css

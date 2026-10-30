@@ -10,10 +10,9 @@ Mọi LLM, coding agent và worker phải đọc đầy đủ [AGENTS.md](AGENTS
 
 ## Chạy trên máy
 
-Nếu server cổng 3667 đang chạy, mở [http://localhost:3667](http://localhost:3667). Dùng lại server đó; không mở thêm cổng 8000.
+Nếu server cổng 3667 đang chạy, mở [http://localhost:3667](http://localhost:3667).
 
 Nếu chưa có server, chạy tại thư mục dự án:
-
 ```bash
 python3 -m http.server 3667 --bind 127.0.0.1
 ```
@@ -34,6 +33,7 @@ Form đặt hàng chỉ mô phỏng kết quả, không gửi đơn hay nhận t
 | Đường dẫn | Nội dung |
 | --- | --- |
 | `index.html` | Nội dung, danh sách `products` và logic tương tác |
+| `giao-hang-doi-tra.html`, `cau-hoi-thuong-gap.html`, `bao-hanh.html` | Các trang thông tin hỗ trợ |
 | `tokens.css` | Màu, font, khoảng cách và biến thiết kế |
 | `base.css` | Kiểu nền tảng, focus và reduced motion |
 | `styles.css` | Giao diện Garden, component và responsive |
@@ -74,7 +74,7 @@ Mã nguồn public: [hobk-116/undo-website](https://github.com/hobk-116/undo-web
 
 Vercel kết nối với repository GitHub và tự triển khai khi push. Bản production dùng [undo-website-eight.vercel.app](https://undo-website-eight.vercel.app/).
 
-Vercel dùng cấu hình HTML tĩnh trong `vercel.json`. `.vercelignore` chỉ cho phép tải `index.html`, các stylesheet và `asset/` lên hosting. `asset_old/` và tài liệu vẫn nằm trong GitHub, không thuộc bộ file triển khai.
+Vercel dùng cấu hình HTML tĩnh trong `vercel.json`. `.vercelignore` chỉ cho phép tải các trang HTML, stylesheet và `asset/` lên hosting. `asset_old/` và tài liệu vẫn nằm trong GitHub, không thuộc bộ file triển khai.
 
 Xem thay đổi bằng `git status` và `git diff`; chỉ tạo commit, thêm remote hoặc push khi có yêu cầu.
 

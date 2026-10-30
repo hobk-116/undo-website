@@ -4,6 +4,12 @@ Ghi thay đổi theo ngày. Dự án chưa gán phiên bản phát hành.
 
 ## 2026-10-30
 
+### Hỗ trợ và hình ảnh
+
+- Hiển thị đầy đủ ảnh câu chuyện trên desktop và điện thoại.
+- Thêm ba trang hỗ trợ về giao hàng, đổi trả, câu hỏi thường gặp và bảo hành; các chính sách vẫn cần xác nhận.
+- Bỏ chú thích trong ngoặc khỏi liên kết Facebook, Instagram và email.
+
 ### Triển khai
 
 - Tạo repository public `hobk-116/undo-website`.
