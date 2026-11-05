@@ -2,6 +2,18 @@
 
 Tài liệu này dành cho LLM agent đang hỗ trợ người chưa từng dùng agent hoặc đóng góp vào repository. Trao đổi với người dùng bằng tiếng Việt dễ hiểu, đi từng bước và chờ họ thực hiện khi cần. Không yêu cầu họ đọc tài liệu này; chọn các phần phù hợp để hướng dẫn trong cuộc trò chuyện.
 
+## Khởi động lần đầu
+
+Người dùng có thể mở thư mục repo trong công cụ agent rồi yêu cầu đọc file này, hoặc đính kèm file vào cuộc trò chuyện nếu công cụ hỗ trợ. Đọc được file hướng dẫn chưa có nghĩa là đọc được mã nguồn repo. Cho người dùng prompt bắt đầu:
+
+```text
+Tôi chưa từng dùng agent. Hãy đọc HUONG-DAN-AGENT-CONTRIBUTE.md và hướng dẫn tôi từng bước. Trước tiên kiểm tra bạn có đọc được repo không. Chưa sửa file.
+```
+
+Giải thích agent là công cụ AI có thể hỗ trợ công việc theo quyền và công cụ được cấp. Kiểm tra rồi nói rõ khả năng hiện tại: đọc file, sửa file, chạy lệnh, truy cập GitHub hoặc chỉ trả lời trong chat. Nếu chưa truy cập được repo, hướng dẫn người dùng mở đúng thư mục hoặc kết nối theo công cụ họ đang dùng; không báo đã đọc, sửa hay kiểm tra khi chưa thực hiện được.
+
+Mỗi bước hướng dẫn cần nêu người thực hiện, vị trí thao tác và kết quả mong đợi. Khi người dùng phải thao tác, chỉ giao một bước hoặc một nhóm bước ngắn rồi chờ kết quả. Trước một lệnh, giải thích lệnh làm gì và chạy trong thư mục nào; thay giá trị mẫu bằng thông tin đã xác nhận. Nếu kết quả khác dự kiến, kiểm tra nguyên nhân trước khi đi tiếp.
+
 ## Bắt đầu từ mục tiêu của người dùng
 
 1. Đọc đầy đủ [AGENTS.md](AGENTS.md) và [README.md](README.md), cùng các chỉ dẫn áp dụng trong môi trường hiện tại. Nếu không đọc được tài liệu bắt buộc, nói rõ và dừng phần việc phụ thuộc.
@@ -9,7 +21,9 @@ Tài liệu này dành cho LLM agent đang hỗ trợ người chưa từng dùn
 3. Hỏi người dùng muốn sửa gì hoặc muốn tìm hiểu trước. Gợi ý bắt đầu bằng một thay đổi nhỏ, chẳng hạn sửa lỗi chính tả hoặc mô tả sản phẩm. Nếu họ chỉ hỏi, trả lời mà không tự sửa file.
 4. Hỏi họ đang dùng công cụ agent nào và đã có bản sao repo trên máy chưa. Hướng dẫn theo công cụ và quyền thực tế; không giả định họ có quyền ghi vào repo.
 
-Giải thích khi cần: repo là nơi lưu mã nguồn; prompt là lời nhắn giao việc cho agent; commit là bản ghi thay đổi; pull request (PR) là đề nghị chủ repo xem và nhận thay đổi. Dùng ví dụ từ công việc đang làm thay vì yêu cầu người dùng học Git trước.
+Giải thích mọi thuật ngữ kỹ thuật khi lần đầu dùng với người mới, bằng một câu ngắn và ví dụ từ công việc đang làm. Không giả định người dùng biết Git hoặc GitHub. Hỏi lại nếu họ chưa hiểu, rồi giải thích bằng cách khác; không đưa toàn bộ từ vựng cùng lúc.
+
+Các thuật ngữ thường gặp: repository (repo) là nơi lưu mã nguồn và lịch sử thay đổi; prompt là lời nhắn giao việc cho agent; branch là nhánh làm việc riêng; commit là bản ghi các thay đổi; push là gửi commit lên GitHub; fork là bản sao repo trên tài khoản GitHub của người dùng; clone là tải bản sao repo về máy; pull request (PR) là đề nghị xem và gộp thay đổi từ nhánh này sang nhánh khác; merge là gộp thay đổi; conflict là xung đột cần xử lý khi Git không thể tự kết hợp một số thay đổi. Giải thích thêm thuật ngữ khác ngay khi dùng, kể cả tên nút hoặc lệnh.
 
 ## Chuẩn bị bản sao và xem website
 
@@ -39,6 +53,8 @@ Các tính năng khác nhau vẫn có thể sửa cùng đoạn trong `index.htm
 ## Prompt mẫu cho người dùng
 
 Đề xuất một prompt phù hợp với mục tiêu hiện tại; người dùng có thể thay nội dung trong ngoặc vuông. Giải thích rằng họ có thể tiếp tục nhắn bằng lời bình thường nếu muốn đổi yêu cầu.
+
+Giúp người dùng mô tả vị trí cần sửa, hiện trạng, kết quả muốn có và phần cần giữ. Ví dụ: "Ở trang chủ trên điện thoại, nút xem nhanh khó bấm. Hãy tăng vùng bấm, giữ nguyên màu và bố cục." Nếu thiếu thông tin ảnh hưởng đến cách sửa, hỏi ngắn gọn trước khi thực hiện.
 
 **Tìm hiểu repo:**
 
@@ -82,11 +98,57 @@ Hãy đọc AGENTS.md và README.md. Tôi sẽ làm [tính năng]. Kiểm tra tr
 Có người vừa merge thay đổi vào nhánh chính. Hãy kiểm tra nhánh của tôi, giải thích cách cập nhật mà giữ công việc hiện tại và giúp tôi kiểm tra lại. Nếu có xung đột, hãy giải thích trước khi xử lý.
 ```
 
+**Tạo và xem pull request:**
+
+```text
+Hãy hướng dẫn tôi tạo pull request cho thay đổi này. Giải thích từng thuật ngữ, chỉ tôi cách xem lại và chờ tôi trước khi gửi.
+```
+
+**Xem xét và gộp pull request:**
+
+```text
+Hãy giải thích pull request [liên kết] thay đổi gì, cách kiểm tra và các bước merge. Giải thích từng thuật ngữ; chưa merge khi tôi chưa yêu cầu.
+```
+
+**Sửa lại cách hiểu của agent:**
+
+```text
+Dừng sửa. Bạn đang hiểu sai phần [nội dung]. Tôi muốn [kết quả]. Hãy nhắc lại yêu cầu trước khi tiếp tục.
+```
+
+**Báo lỗi:**
+
+```text
+Tôi vừa làm [các bước] ở [trang hoặc công cụ]. Tôi mong đợi [kết quả], nhưng thấy [hiện tượng hoặc thông báo lỗi]. Hãy giúp tôi tìm nguyên nhân và giải thích trước khi sửa.
+```
+
+**Hoàn tác một thay đổi:**
+
+```text
+Tôi muốn bỏ phần [thay đổi cụ thể] bạn vừa sửa. Hãy kiểm tra và hoàn tác đúng phần đó, giữ các thay đổi khác. Nếu không phân biệt được, hãy hỏi tôi trước.
+```
+
 ## Khi thực hiện thay đổi
 
 Xác nhận phạm vi nếu yêu cầu chưa rõ. Đọc file liên quan trước khi sửa, chỉ sửa phần người dùng yêu cầu và làm theo AGENTS.md. Khi thay đổi UI, hành vi hoặc ảnh, cập nhật CHANGELOG.md; nếu đổi cách chạy hoặc cấu trúc, cập nhật README.md theo quy tắc repo.
 
 Sau khi sửa, chạy kiểm tra phù hợp theo AGENTS.md và README. Cho người dùng biết cách tự mở trang, vị trí cần xem và kết quả mong đợi. Phân biệt kiểm tra đã chạy với kiểm tra chưa chạy; nếu thiếu công cụ, nói rõ giới hạn và hướng dẫn kiểm tra thủ công phù hợp. Với thay đổi giao diện hoặc giỏ hàng, không coi một lần xem trang là đủ để khẳng định toàn bộ chức năng hoạt động.
+
+## Khi gặp lỗi hoặc cần dừng
+
+Nếu người dùng báo lỗi, hỏi bước vừa làm, kết quả mong đợi và thông báo lỗi chính xác; có thể dùng ảnh nếu công cụ hỗ trợ. Nhắc họ che mật khẩu, token và thông tin riêng tư trước khi chia sẻ. Không yêu cầu chạy lại liên tục một lệnh đã thất bại khi chưa tìm hiểu nguyên nhân.
+
+Khi người dùng yêu cầu dừng, dừng các thao tác tiếp theo và báo phần đã thực hiện. Khi họ muốn hoàn tác, đối chiếu thay đổi hiện tại để xác định đúng phần cần bỏ. Không dùng thao tác xóa hàng loạt hoặc ghi đè công việc khác; nếu không tách được thay đổi, hỏi trước khi xử lý.
+
+## Tiếp tục vào lần sau
+
+Trước khi kết thúc một lượt làm việc, tóm tắt mục tiêu, repo và nhánh hiện tại, các file đã sửa, kiểm tra đã chạy, lỗi còn lại và bước tiếp theo. Ghi rõ trạng thái: đã sửa file trên máy; đã commit để ghi lịch sử; đã push lên GitHub; đã merge vào nhánh đích; hoặc đã xác nhận triển khai lên website. Không suy ra mốc sau chỉ từ mốc trước.
+
+Đưa ghi chú trong chat để người dùng có thể sao chép sang cuộc trò chuyện mới. Khi tiếp tục, agent đọc lại quy tắc repo và kiểm tra trạng thái thực tế trước khi dựa vào ghi chú cũ. Prompt gợi ý:
+
+```text
+Tôi muốn tiếp tục công việc trước. Đây là ghi chú bàn giao: [dán ghi chú]. Hãy đọc lại hướng dẫn repo, kiểm tra trạng thái hiện tại và giải thích bước tiếp theo trước khi sửa.
+```
 
 ## Gửi đóng góp để chủ repo xem
 
@@ -95,3 +157,29 @@ Trước khi gửi, trình bày danh sách file thay đổi, mục đích, kết
 Theo AGENTS.md, không tự commit, thêm remote, push hoặc deploy. Chỉ thực hiện từng thao tác khi người dùng yêu cầu; trước khi push, nhắc rằng README mô tả Vercel tự triển khai khi push và tác động phụ thuộc nhánh/cấu hình thực tế. Không khẳng định mọi nhánh đều triển khai production. Nếu người dùng không có quyền ghi, hướng dẫn push lên fork của họ rồi tạo PR về repo gốc; nếu có quyền ghi, xác nhận quy trình nhánh và đích PR phù hợp. Không tự merge PR.
 
 Khi người dùng muốn tạo PR, giúp họ ghi nội dung ngắn gồm thay đổi, lý do và kiểm tra đã chạy. Nếu không đủ quyền hoặc thiếu công cụ, mô tả bước cần người dùng thực hiện và không báo đã gửi khi chưa xác nhận được kết quả.
+
+Mẫu để agent điền theo thay đổi thực tế, không tự điền kết quả kiểm tra chưa chạy:
+
+```text
+Tiêu đề: [Mô tả thay đổi cụ thể]
+
+Thay đổi: [Trước đây thế nào, sau thay đổi thế nào]
+Lý do: [Vấn đề cần giải quyết]
+Đã kiểm tra: [Các kiểm tra thực sự đã chạy và kết quả]
+Chưa kiểm tra hoặc cần người xem lưu ý: [Nội dung còn lại, nếu có]
+```
+
+## Hướng dẫn tạo và gộp pull request
+
+Giải thích PR là một đề nghị trên GitHub để người có quyền xem thay đổi trước khi gộp. Tạo PR chưa gộp thay đổi vào nhánh đích. Nếu tác giả push thêm commit lên cùng nhánh nguồn, PR sẽ cập nhật theo.
+
+Hướng dẫn tác giả theo từng bước, dùng tên nhánh và repo đã kiểm tra thay cho ví dụ:
+
+1. Kiểm tra các file và kết quả kiểm tra, sau đó hướng dẫn tạo commit và push nhánh tính năng khi người dùng yêu cầu. Với fork, nhánh nguồn nằm trong fork; nhánh đích nằm trong repo gốc.
+2. Mở repo gốc trên GitHub, vào mục Pull requests và chọn tạo PR mới. Chọn repo và nhánh đích (base), rồi chọn repo và nhánh chứa thay đổi (head hoặc compare). Kiểm tra hướng so sánh trước khi tiếp tục.
+3. Xem danh sách thay đổi, đặt tiêu đề mô tả công việc và viết ngắn mục đích, cách kiểm tra, phần chưa kiểm tra. Nếu có thay đổi ngoài ý muốn, xử lý trước khi gửi.
+4. Tạo PR khi người dùng yêu cầu, rồi chia sẻ liên kết PR với người dùng để họ chủ động gửi cho người xem. Nếu cần sửa theo góp ý, cập nhật nhánh và push thêm commit; PR hiện tại sẽ nhận các commit đó.
+
+Hướng dẫn người xem PR phân biệt việc nhận xét với việc gộp: đọc mô tả và phần thay đổi, xem các kiểm tra đã chạy và góp ý hoặc yêu cầu tác giả sửa khi cần. Trước khi gộp, kiểm tra repo và nhánh đích, quyền của người thao tác, xung đột, các kiểm tra và quy tắc bảo vệ nhánh nếu có. Kiểm tra lại sau khi nhánh chính thay đổi; chỉ người có quyền mới gộp được.
+
+Khi người dùng trực tiếp yêu cầu hướng dẫn merge, giải thích các lựa chọn gộp mà GitHub hiển thị và tác động lên lịch sử commit; chọn theo quy ước nhóm nếu đã biết, hỏi nếu chưa rõ. Hướng dẫn người có quyền chọn Merge pull request và xác nhận trên GitHub, với tên nút có thể thay đổi theo lựa chọn gộp. Không tự merge. Sau đó kiểm tra trạng thái PR đã gộp và nhánh đích đã nhận thay đổi. Theo README, Vercel có thể triển khai khi push; kiểm tra cấu hình và kết quả triển khai thực tế trước khi khẳng định website đã cập nhật.

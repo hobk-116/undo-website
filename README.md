@@ -8,6 +8,8 @@ Website production: [undo-website-eight.vercel.app](https://undo-website-eight.v
 
 Mọi LLM, coding agent và worker phải đọc đầy đủ [AGENTS.md](AGENTS.md) trước khi phân tích, sửa hoặc kiểm tra dự án, rồi tuân thủ các quy tắc trong file. Khi giao việc cho worker, truyền các quy tắc liên quan vào yêu cầu. README không thay thế AGENTS.md.
 
+Để hỗ trợ người mới, yêu cầu agent đọc [hướng dẫn đóng góp dành cho agent](HUONG-DAN-AGENT-CONTRIBUTE.md). Tài liệu này hướng dẫn agent giải thích thuật ngữ và đồng hành từ bước đầu đến tạo, xem và gộp pull request.
+
 ## Chạy trên máy
 
 Nếu server cổng 3667 đang chạy, mở [http://localhost:3667](http://localhost:3667).
