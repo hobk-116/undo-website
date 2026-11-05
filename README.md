@@ -35,8 +35,11 @@ Form đặt hàng chỉ mô phỏng kết quả, không gửi đơn hay nhận t
 | Đường dẫn | Nội dung |
 | --- | --- |
 | `index.html` | Nội dung, danh sách `products` và logic tương tác |
+| `chinh-sach.html` | Trang tổng hợp chính sách |
 | `giao-hang-doi-tra.html`, `cau-hoi-thuong-gap.html`, `bao-hanh.html` | Các trang thông tin hỗ trợ |
+| `dat-hang-thanh-toan.html`, `bao-mat.html`, `dieu-khoan-su-dung.html` | Đặt hàng, bảo mật và điều khoản mô phỏng |
 | `tokens.css` | Màu, font, khoảng cách và biến thiết kế |
+| `fonts.css`, `asset/fonts/` | Font cục bộ và giấy phép |
 | `base.css` | Kiểu nền tảng, focus và reduced motion |
 | `styles.css` | Giao diện Garden, component và responsive |
 | `asset/` | Logo UnDo và bộ ảnh đang dùng |
@@ -50,7 +53,7 @@ Form đặt hàng chỉ mô phỏng kết quả, không gửi đơn hay nhận t
 
 ## Giao diện và asset
 
-Website dùng Hallmark Garden với nền yến mạch, xanh UnDo, tiêu đề Vollkorn 600 và nội dung Be Vietnam Pro 400/500/600. Google Fonts cần internet; khi không tải được font, trình duyệt dùng font dự phòng.
+Website dùng Hallmark Garden với nền trắng, xanh UnDo, tiêu đề Vollkorn 600 và nội dung Be Vietnam Pro 400/500/600. Font được lưu trong `asset/fonts/` và tải từ website, không cần kết nối Google Fonts.
 
 Logo mới nằm ở `asset/logo.png`. Tám ảnh trong `asset/` đã được thay logo bằng ChatGPT Image: bốn ảnh bối cảnh JPG và bốn ảnh sản phẩm WebP. `asset_old/` giữ nguyên bộ cũ để đối chiếu hoặc khôi phục.
 

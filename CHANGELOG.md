@@ -2,6 +2,46 @@
 
 Ghi thay đổi theo ngày. Dự án chưa gán phiên bản phát hành.
 
+## 2026-11-05
+
+### Chính sách
+
+- Đồng bộ FAQ, hướng dẫn đặt hàng, bảo mật và điều khoản với chính sách mô phỏng và chức năng hiện tại.
+
+- Thêm trang tổng hợp chính sách, cập nhật liên kết điều hướng và tóm tắt chính sách trên trang chủ.
+
+- Giới hạn chiều rộng bảng phí vận chuyển trong cột nội dung và cho phép xuống dòng trên điện thoại.
+
+- Áp dụng nội dung chính sách học phần, cập nhật thông báo và trang hỗ trợ; thêm trang đặt hàng, bảo mật và điều khoản.
+- Đồng bộ FAQ hoàn tiền theo mốc 5 đến 7 ngày; bỏ câu sửa đơn chưa hoàn tất.
+
+
+### Giao diện
+
+- Cập nhật mục liên hệ với Facebook và email của UnDo; bỏ Instagram.
+
+- Hiển thị bốn nhãn màu trên thẻ sản phẩm.
+
+- Gộp bốn màu vào một thẻ Undo Everyday Mug, giữ chọn màu trong chi tiết.
+
+- Đổi tiêu đề bộ sưu tập thành Tất cả và đưa bốn màu về các thẻ sản phẩm riêng.
+
+- Bỏ câu mô tả website mô phỏng khỏi thông báo đầu trang.
+
+- Sửa mũi tên select xuống dòng; đồng bộ chiều cao khung ảnh chi tiết theo tỉ lệ gốc, cho nội dung cuộn khi dài.
+
+- Mở rộng hộp chi tiết và khung ảnh theo tỉ lệ gốc; dùng select native được trình duyệt render bằng `base-select`.
+
+- Bỏ nút xem nhanh, tạm dừng và nút màu; chọn màu bằng danh sách trong chi tiết. Preview chuyển mờ 1 giây với tốc độ dạng chuông.
+
+- Hiển thị trọn ảnh xem nhanh; preview đổi màu mỗi 3 giây, có nút tạm dừng và dừng khi tương tác hoặc bật giảm chuyển động.
+
+- Gộp bốn phiên bản màu thành một thẻ Undo Everyday Mug, thêm mô tả ngắn và giữ chọn màu, yêu thích, giỏ hàng.
+
+- Lưu font Vollkorn và Be Vietnam Pro trong dự án; hiển thị banner theo tỉ lệ ảnh gốc.
+
+- Chuyển nền chủ đạo sang trắng và làm sáng các màu nhấn, nền phụ và đường viền.
+
 ## 2026-10-30
 
 ### Hỗ trợ và hình ảnh
