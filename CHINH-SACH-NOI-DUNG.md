@@ -29,11 +29,11 @@ Ngày làm việc tính từ thứ Hai đến thứ Sáu, trừ ngày lễ. Th�
 
 ## Nhận hàng và kiểm tra sản phẩm
 
-Khi nhận hàng, hãy kiểm tra màu, số lượng và tình trạng sản phẩm. Nếu kiện bị rách, ướt hoặc móp, hãy báo với nhân viên giao hàng để ghi nhận trước khi nhận.
+Khi nhận hàng, hãy kiểm tra phân loại, số lượng và tình trạng sản phẩm. Nếu kiện bị rách, ướt hoặc móp, hãy báo với nhân viên giao hàng để ghi nhận trước khi nhận.
 
 Quay lại video khi mở kiện hàng. Video mở kiện giúp UnDo kiểm tra nhanh hơn khi có vấn đề. Bạn vẫn có thể yêu cầu đổi trả nếu không quay video, UnDo sẽ đối chiếu thông tin đơn hàng và bằng chứng bạn cung cấp.
 
-Nếu phát hiện giao sai, thiếu hàng hoặc hư hỏng, hãy giữ lại sản phẩm và bao bì còn có thể sử dụng và liên hệ ngay với UnDo Không tiếp tục dùng sản phẩm đang có dấu hiệu nứt, vỡ hoặc mất an toàn.
+Nếu phát hiện giao sai, thiếu hàng hoặc hư hỏng, hãy giữ lại sản phẩm và bao bì còn có thể sử dụng và liên hệ ngay với UnDo. Không tiếp tục dùng sản phẩm đang có dấu hiệu nứt, vỡ hoặc mất an toàn.
 
 ## Điều kiện và thời hạn đổi trả
 
@@ -61,25 +61,29 @@ Nếu mẫu cần đổi còn hàng, UnDo gửi sản phẩm thay thế trong 1-
 
 ## Hoàn tiền
 
-UnDo hoàn số tiền bạn đã trả cho sản phẩm được chấp nhận trả, bao gồm cả phí vận chuyển (nếu có). Nếu đơn có giảm giá, khoản hoàn trừ phần giảm giá đã chiết khấu cho sản phẩm đó.
+UnDo hoàn đúng số tiền thực trả sau giảm giá của sản phẩm được chấp nhận trả, không trừ giảm giá thêm lần nữa. Nếu trả toàn bộ đơn do lỗi của UnDo, khoản hoàn gồm toàn bộ phí giao hàng ban đầu đã thanh toán. Nếu chỉ trả một phần, UnDo hoàn tiền sản phẩm được chấp nhận trả và phần phí giao hàng đã thu riêng cho sản phẩm đó, nếu có; phí giao chung cho phần hàng bạn giữ lại không được hoàn. UnDo chịu phí gửi trả do lỗi của mình và không khấu trừ phí xử lý vào khoản hoàn.
 
-UnDo xử lý khoản hoàn tiền trong khoảng 5 đến 7 ngày làm việc sau khi chấp nhận yêu cầu. UnDo và bạn thống nhất phương thức hoàn trước khi thực hiện. Nếu quá thời gian này mà chưa nhận được tiền, hãy cung cấp mã yêu cầu để kiểm tra.
+UnDo xử lý khoản hoàn tiền trong khoảng 3 đến 5 ngày làm việc sau khi chấp nhận yêu cầu. UnDo và bạn thống nhất phương thức hoàn trước khi thực hiện. Nếu quá thời gian này mà chưa nhận được tiền, hãy cung cấp mã yêu cầu để kiểm tra.
 
 # Đặt hàng và thanh toán
 
 ## Các bước đặt hàng
 
-Chọn màu, số lượng rồi thêm sản phẩm vào giỏ. Mở giỏ hàng để kiểm tra từng sản phẩm và tạm tính; bạn có thể tăng, giảm hoặc xóa sản phẩm trước khi tiếp tục.
+Chọn phân loại, số lượng rồi thêm sản phẩm vào giỏ. Mở giỏ hàng để kiểm tra từng sản phẩm và tạm tính; bạn có thể tăng, giảm hoặc xóa sản phẩm trước khi tiếp tục.
 
-Chọn đặt hàng để mở biểu mẫu, nhập dữ liệu mẫu và kiểm tra lại lựa chọn. Sau khi bạn xác nhận, website hiển thị kết quả và xóa các sản phẩm trong giỏ. Bạn không cần đăng ký tài khoản.
+Chọn đặt hàng để mở biểu mẫu, chọn mã lượt thử và khu vực giao hàng mẫu, rồi kiểm tra phân loại, số lượng và chi phí dự kiến. Không nhập thông tin cá nhân. Sau khi bạn xác nhận, website hiển thị tóm tắt đơn thử và xóa các sản phẩm trong giỏ. Bạn không cần đăng ký tài khoản.
 
 ## Giá và phương thức thanh toán
 
 Giá hiển thị tính bằng Việt Nam Đồng. Tạm tính trong giỏ là tổng giá trị sản phẩm, chưa phải số tiền đã thanh toán. Biểu mẫu chỉ hiển thị phương thức thanh toán khi nhận hàng (COD) để minh họa và không thực hiện thu tiền. Không chuyển khoản hoặc cung cấp thông tin thẻ khi dùng website.
 
+## Chi phí giao hàng dự kiến
+
+Checkout hiển thị tiền sản phẩm, phí giao hàng và tổng dự kiến theo khu vực mẫu. Đơn dưới 399.000đ có phí dự kiến 15.000đ ở nội thành Hà Nội; khu vực khác hiển thị khoảng 25.000đ đến 40.000đ và tổng tiền tương ứng, chưa chốt phí cụ thể. Đơn từ 399.000đ tiền sản phẩm được miễn phí giao hàng dự kiến.
+
 ## Sửa hoặc hủy đơn
 
-Trước khi xác nhận, bạn có thể đóng biểu mẫu để sửa màu, số lượng hoặc xóa sản phẩm trong giỏ. Sau khi xác nhận, bạn có thể .
+Trước khi xác nhận, bạn có thể đóng biểu mẫu để sửa phân loại, số lượng hoặc xóa sản phẩm trong giỏ. Sau khi xác nhận, bạn có thể bắt đầu một lượt trải nghiệm mới; website hiện không hỗ trợ sửa, theo dõi hoặc hủy đơn trực tuyến.
 
 UnDo tiếp nhận yêu cầu sửa hoặc hủy miễn phí khi chưa bàn giao kiện hàng cho đơn vị vận chuyển. Nếu kiện đã gửi, UnDo kiểm tra khả năng điều chỉnh với đơn vị giao hàng và thông báo trước mọi chi phí phát sinh. Đơn chỉ được hủy khi UnDo xác nhận.
 
@@ -87,7 +91,7 @@ UnDo tiếp nhận yêu cầu sửa hoặc hủy miễn phí khi chưa bàn giao
 
 ## Thời hạn bảo hành
 
-UnDo bảo hành 6 tháng kể từ ngày nhận hàng đối với lỗi sản xuất. UnDo đối chiếu ngày nhận qua mã đơn hàng hoặc email xác nhận đơn.
+UnDo bảo hành 6 tháng kể từ ngày nhận hàng đối với lỗi sản xuất. Trong quy trình bảo hành, UnDo đối chiếu ngày nhận qua thông tin mua hàng hoặc bằng chứng phù hợp do khách hàng cung cấp. Website hiện không tạo mã đơn hay gửi email xác nhận; khi kiểm thử, bạn dùng thông tin đơn hàng mẫu.
 
 ## Phạm vi và trường hợp không áp dụng
 
@@ -105,29 +109,33 @@ UnDo chịu chi phí gửi nhận khi xác nhận lỗi thuộc bảo hành. V�
 
 ## Sử dụng an toàn và bảo quản
 
-Đặt cốc trên bề mặt phẳng, sạch và nhẵn. Kiểm tra độ ổn định trước khi rót đồ uống nóng; UnDo không chịu trách nhiệm khi thiết bị, vật tư hoặc tài liệu bị hỏng hóc bởi việc cốc bị đổ không do lỗi nhà sản xuất
+Đặt cốc trên bề mặt phẳng, sạch và nhẵn. Kiểm tra độ ổn định trước khi rót đồ uống nóng và đặt cốc xa thiết bị điện, tài liệu hoặc vật dễ hư hỏng khi gặp nước. Không dựa hoàn toàn vào khả năng hạn chế nghiêng để tránh đổ cốc.
 
 Vệ sinh bằng dụng cụ mềm và để khô sau khi sử dụng. Chỉ dùng với lò vi sóng, máy rửa bát hoặc chất tẩy rửa với hướng dẫn từ nhà sản xuất. Nếu thấy nứt vỡ, biến dạng hoặc bộ phận không còn gắn chắc, hãy ngừng sử dụng để kiểm tra.
 
 # Chính sách bảo mật
 
+Cập nhật ngày 06/11/2026.
+
+Nhóm thực hiện dự án học phần UnDo phụ trách nội dung website. Nếu có câu hỏi về dữ liệu hoặc cần báo vấn đề, bạn có thể liên hệ qua email lal347092@gmail.com. Không gửi thông tin nhạy cảm hoặc giấy tờ tùy thân.
+
 ## Thông tin lưu trên trình duyệt
 
-Website lưu giỏ hàng và danh sách yêu thích trong bộ nhớ trình duyệt để giữ lựa chọn khi bạn tải lại trang. Dữ liệu này không có thời hạn xóa tự động. Bạn có thể xóa dữ liệu website trong cài đặt trình duyệt; thao tác này cũng xóa giỏ hàng và danh sách yêu thích đã lưu.
+Website lưu giỏ hàng trong bộ nhớ trình duyệt để giữ lựa chọn khi bạn tải lại trang. Dữ liệu này không có thời hạn xóa tự động. Bạn có thể xóa dữ liệu website trong cài đặt trình duyệt; thao tác này cũng xóa giỏ hàng đã lưu.
 
 ## Thông tin trong biểu mẫu
 
-Biểu mẫu đặt hàng xử lý thông tin trong trình duyệt và không gửi đơn đến máy chủ hoặc dịch vụ thanh toán. Tên bạn nhập có thể xuất hiện trong thông báo xác nhận trên màn hình. Biểu mẫu đăng ký email không gửi hoặc lưu email và xóa trường nhập sau khi hiển thị thông báo.
+Biểu mẫu đặt hàng chỉ cho chọn mã lượt thử và khu vực giao hàng mẫu, không có ô nhập tên, số điện thoại, email hoặc địa chỉ thật. Mã lượt thử xuất hiện trong kết quả trên màn hình; mã và khu vực được đặt lại sau khi xác nhận, không gửi đến máy chủ và không lưu vào bộ nhớ trình duyệt. Biểu mẫu đăng ký dùng sẵn demo@example.com ở trường chỉ đọc, không gửi hoặc lưu email.
 
 Chỉ nhập dữ liệu mẫu. Không nhập tên thật, số điện thoại, email, địa chỉ hoặc thông tin thanh toán của bạn hay người khác.
 
 ## Dịch vụ bên ngoài
 
-Website sử dụng Vercel làm môi trường vận hành. Khi truy cập, trình duyệt kết nối đến các dịch vụ này. Các dịch vụ này có thể ghi nhật ký truy cập theo chính sách và cấu hình riêng. Việc website không gửi dữ liệu biểu mẫu không có nghĩa các dịch vụ không ghi nhận kết nối của bạn.
+Website sử dụng Vercel làm môi trường vận hành. Khi truy cập, trình duyệt kết nối đến Vercel. Vercel có thể ghi nhật ký truy cập theo chính sách và cấu hình riêng. Việc website không gửi dữ liệu biểu mẫu không có nghĩa các dịch vụ không ghi nhận kết nối của bạn.
 
 ## Cookie và theo dõi
 
-Website không tích hợp cookie quảng cáo hoặc công cụ phân tích hành vi. Giỏ hàng và danh sách yêu thích sử dụng bộ nhớ trình duyệt.
+Website không tích hợp cookie quảng cáo hoặc công cụ phân tích hành vi. Giỏ hàng sử dụng bộ nhớ trình duyệt.
 
 ## Thay đổi chính sách
 
@@ -135,7 +143,7 @@ UnDo cập nhật chính sách trên trang này khi thay đổi cách lưu dữ 
 
 ## Lựa chọn của bạn
 
-Bạn có thể xem sản phẩm mà không nhập thông tin vào biểu mẫu. Tính năng yêu thích và giỏ hàng cần quyền lưu dữ liệu trong trình duyệt; nếu trình duyệt chặn lưu trữ hoặc đang ở chế độ ẩn danh, lựa chọn có thể mất khi đóng phiên.
+Bạn có thể xem sản phẩm mà không nhập thông tin vào biểu mẫu. Giỏ hàng cần quyền lưu dữ liệu trong trình duyệt; nếu trình duyệt chặn lưu trữ hoặc đang ở chế độ ẩn danh, lựa chọn có thể mất khi đóng phiên.
 
 ## An toàn khi trải nghiệm
 
@@ -145,7 +153,7 @@ Không chia sẻ mật khẩu, mã xác thực, số thẻ, tài khoản ngân h
 
 ## Sử dụng website
 
-Bạn có thể xem sản phẩm, lọc màu, lưu yêu thích và trải nghiệm giỏ hàng. Chỉ dùng dữ liệu mẫu khi điền biểu mẫu. Không sử dụng website để phát tán mã độc, truy cập trái phép hoặc làm gián đoạn hoạt động của trang.
+Bạn có thể xem sản phẩm, tìm kiếm và trải nghiệm giỏ hàng. Chỉ dùng dữ liệu mẫu khi điền biểu mẫu. Không sử dụng website để phát tán mã độc, truy cập trái phép hoặc làm gián đoạn hoạt động của trang.
 
 ## Giá và thông tin sản phẩm
 
@@ -157,7 +165,7 @@ Việc hiển thị thương hiệu, hình ảnh và nội dung không tự cấ
 
 ## Dữ liệu và cập nhật
 
-Giỏ hàng và yêu thích phụ thuộc vào dữ liệu lưu trên trình duyệt. Khi xóa dữ liệu website hoặc đổi trình duyệt, các lựa chọn đã lưu có thể không còn. Nội dung và tính năng có thể thay đổi trong quá trình hoàn thiện dự án.
+Giỏ hàng phụ thuộc vào dữ liệu lưu trên trình duyệt. Khi xóa dữ liệu website hoặc đổi trình duyệt, các lựa chọn đã lưu có thể không còn. Nội dung và tính năng có thể thay đổi trong quá trình hoàn thiện dự án.
 
 # Câu hỏi thường gặp
 
@@ -175,15 +183,15 @@ UnDo áp dụng đổi trả trong 7 ngày với sản phẩm có lỗi sản xu
 
 ## Dữ liệu dùng trong biểu mẫu
 
-Bạn chỉ cần dùng dữ liệu mẫu để trải nghiệm. Không nhập tên thật, số điện thoại, email hoặc địa chỉ của bạn hay người khác.
+Checkout chỉ cho chọn mã lượt thử và khu vực mẫu. Form đăng ký dùng sẵn email demo@example.com và không cho sửa. Không nhập tên thật, số điện thoại, email hoặc địa chỉ của bạn hay người khác.
 
-## Xóa giỏ hàng và yêu thích
+## Xóa giỏ hàng
 
 Bạn có thể xóa từng sản phẩm trên website hoặc xóa dữ liệu của website trong cài đặt trình duyệt.
 
 ## Phí giao hàng
 
-Đơn từ 399.000đ được miễn phí vận chuyển. Với đơn dưới mức này, phí là 15.000đ ở nội thành Hà Nội và từ 25.000đ đến 40.000đ ở khu vực khác. Tạm tính trong giỏ hiện chỉ tính tiền sản phẩm.
+Đơn từ 399.000đ được miễn phí vận chuyển. Với đơn dưới mức này, phí là 15.000đ ở nội thành Hà Nội và từ 25.000đ đến 40.000đ ở khu vực khác. Tạm tính trong giỏ chỉ tính tiền sản phẩm; checkout hiển thị thêm phí giao và tổng dự kiến theo khu vực mẫu. Phí khu vực khác vẫn là một khoảng ước tính.
 
 ## Thời gian nhận hàng
 

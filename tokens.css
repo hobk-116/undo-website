@@ -22,4 +22,5 @@
   --cream: var(--color-paper); --paper: var(--color-paper-2); --ink: var(--color-ink); --muted: var(--color-muted); --line: var(--color-rule); --peach: var(--color-accent-2);
   --shadow: none; --shadow-color: oklch(23% 0.05 152 / .08); --color-overlay: oklch(23% 0.05 152 / .48);
   --mug-sage: #899c7f; --mug-cream: #e8ddc9; --mug-blush: #d6a9a0; --mug-onyx: #454b47;
+  --product-gaming-background: #eeeeee;
 }

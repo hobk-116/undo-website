@@ -23,18 +23,19 @@ Nhấn `Ctrl + C` trong Terminal để dừng server. Có thể mở `index.html
 
 ## Tính năng
 
-- Bốn màu cốc, lọc màu, tìm kiếm và trạng thái không có kết quả.
-- Xem nhanh, chọn màu/số lượng và lưu yêu thích trên trình duyệt.
+- Sáu mẫu cốc với 22 phân loại, tìm kiếm theo mẫu và phân loại và trạng thái không có kết quả.
+- Xem nhanh, chọn phân loại/số lượng.
 - Giỏ hàng có thêm, xóa, tăng giảm số lượng, tính tạm tính và lưu bằng localStorage.
 - Form đặt hàng demo, FAQ, form email demo và menu điện thoại; hỗ trợ desktop, tablet và mobile.
 
-Form đặt hàng chỉ mô phỏng kết quả, không gửi đơn hay nhận thanh toán. Form email không lưu email. Thông số sản phẩm, phí giao hàng và chính sách vẫn là nội dung dự kiến.
+Form đặt hàng chỉ chọn mã lượt thử và khu vực mẫu, không nhập thông tin cá nhân. Checkout và kết quả hiển thị phân loại, số lượng, tiền hàng, phí giao và tổng dự kiến. Phí ngoài nội thành Hà Nội giữ khoảng 25.000đ đến 40.000đ khi chưa đủ mức miễn phí, không tự chốt một mức cụ thể. Form email chỉ đọc dùng sẵn `demo@example.com`, không gửi hoặc lưu email. Thông số sản phẩm, phí giao hàng và chính sách vẫn là nội dung dự kiến; website không gửi đơn hay nhận thanh toán.
 
 ## Cấu trúc dự án
 
 | Đường dẫn | Nội dung |
 | --- | --- |
 | `index.html` | Nội dung, danh sách `products` và logic tương tác |
+| `huong-dan-su-dung.html` | Hướng dẫn sử dụng, vệ sinh và an toàn cho Everyday Mug 400 ml |
 | `chinh-sach.html` | Trang tổng hợp chính sách |
 | `giao-hang-doi-tra.html`, `cau-hoi-thuong-gap.html`, `bao-hanh.html` | Các trang thông tin hỗ trợ |
 | `dat-hang-thanh-toan.html`, `bao-mat.html`, `dieu-khoan-su-dung.html` | Đặt hàng, bảo mật và điều khoản mô phỏng |
@@ -57,21 +58,23 @@ Website dùng Hallmark Garden với nền trắng, xanh UnDo, tiêu đề Vollko
 
 Logo mới nằm ở `asset/logo.png`. Tám ảnh trong `asset/` đã được thay logo bằng ChatGPT Image: bốn ảnh bối cảnh JPG và bốn ảnh sản phẩm WebP. `asset_old/` giữ nguyên bộ cũ để đối chiếu hoặc khôi phục.
 
-Sửa giá, tên và màu trong biến `products` của `index.html`. Khi thay ảnh, cập nhật đường dẫn trong cả `products` và danh sách HTML hiển thị khi JavaScript tắt.
+Sửa giá, tên và phân loại trong biến `products` của `index.html`. Khi thay ảnh, cập nhật đường dẫn trong cả `products` và danh sách HTML hiển thị khi JavaScript tắt.
 
 ## Kiểm tra
 
-Sau khi sửa UI hoặc logic mua sắm, kiểm tra các chức năng trong [AGENTS.md](AGENTS.md). Script tự động cần Node.js, `puppeteer-core` và Google Chrome tại đường dẫn macOS mà script đang khai báo. Các công cụ này không phải dependency chạy website.
+Sau khi sửa UI hoặc logic mua sắm, kiểm tra các chức năng trong [AGENTS.md](AGENTS.md). Script tự động dùng Node.js, thư viện `playwright` và Google Chrome đã cài trên máy (`channel: 'chrome'`). Các công cụ này không phải dependency chạy website.
 
-Trỏ `HALLMARK_PUPPETEER` đến thư mục có `node_modules/puppeteer-core`, rồi chạy từ thư mục dự án:
+Trỏ `HALLMARK_PLAYWRIGHT` đến thư mục có `node_modules/playwright`, rồi chạy từ thư mục dự án. Có thể bỏ biến này nếu Node tìm được Playwright trong dự án:
 
 ```bash
-HALLMARK_PUPPETEER=/path/to/test-tools \
-UNDO_TEST_URL=http://127.0.0.1:3667/ \
+HALLMARK_PLAYWRIGHT=/path/to/test-tools \
+UNDO_TEST_URL=http://localhost:3667/ \
 node .hallmark/check-site.mjs
 ```
 
-Nhánh kiểm tra khi tắt JavaScript hiện dùng cố định cổng 3667. Script ghi kết quả vào `.hallmark/feature-checks.json`. Lượt kiểm tra sau khi thay logo ngày 2026-10-30 đạt 34 kiểm tra, không có lỗi JavaScript; cần chạy lại khi có thay đổi liên quan.
+Mọi nhánh kiểm tra dùng chung `UNDO_TEST_URL`. Script ghi kết quả, thời điểm và URL vào `.hallmark/feature-checks.json`. Đặt thêm `UNDO_EVIDENCE_DIR=/path/to/Screenshots` để xuất ảnh giao diện desktop/mobile. Dùng một thư mục ảnh riêng cho mỗi lần cần giữ bằng chứng vì script sẽ ghi đè các ảnh cùng tên trong thư mục đó.
+
+Lượt kiểm tra ngày 2026-11-06 đạt 58 kiểm tra trên Chrome local, gồm chi phí giao hàng, form mẫu, giỏ hàng, mobile, bàn phím và các trang chính sách. Đây là kiểm tra tự động, không thay thế test với người dùng thật. Bản online chỉ nhận các thay đổi này sau khi được triển khai.
 
 ## Git và triển khai
 
