@@ -1,5 +1,7 @@
 # Changelog
 
+- Sửa cấu hình Vercel loại nhầm bo-suu-tap.html khỏi gói triển khai, gây mất trang catalog trên production.
+
 - Giảm logo về mức trung gian: 96px desktop, 80px mobile và 112px footer.
 
 - Tăng kích thước chữ logo UnDo bằng căn lại khoảng trong suốt của asset; cân header 64px desktop, 56px mobile và logo footer.
