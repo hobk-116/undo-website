@@ -1,8 +1,54 @@
 # Changelog
 
+- Thay đăng nhập một nút bằng form email/mật khẩu theo WebEBU; đăng ký gồm họ tên, email, điện thoại, mật khẩu và nhập lại. Có hiện/ẩn mật khẩu, kiểm tra thông tin, lỗi đăng nhập và trạng thái xử lý. Chỉ lưu hồ sơ và bộ kiểm tra mật khẩu PBKDF2 có salt trong sessionStorage; không có backend.
+
+- Xóa dòng Khách UnDo và lời giới thiệu dư trong đăng nhập/đăng ký; chỉ hiển thị tên hồ sơ khi người dùng đã đăng ký. Giữ nguyên thao tác tài khoản.
+
+## 2026-11-12: Rà soát toàn trang
+
+- Đồng bộ tìm kiếm giữa các trang, thêm nút tìm và giữ thao tác mở liên kết sản phẩm bằng tab mới.
+- Giữ focus khi đổi số lượng hoặc xóa sản phẩm trong giỏ; giới hạn số lượng 1 đến 99 và đồng bộ giỏ giữa các tab.
+- Kiểm tra tên, địa chỉ chỉ chứa khoảng trắng; làm rõ lỗi tài khoản và cho phép nhập email nhận thông tin.
+- Bổ sung câu trả lời FAQ, cập nhật nội dung đặt hàng và bảo mật theo chức năng hiện có; bỏ các lời chú thích thử nghiệm ngoài header/footer.
+- Tăng vùng bấm điều hướng hỗ trợ, chuẩn hóa tiêu đề sản phẩm và cách xuống dòng nội dung đơn hàng.
+
 Ghi thay đổi theo ngày. Dự án chưa gán phiên bản phát hành.
 
 ## 2026-11-12
+
+- Rà soát trực tiếp bằng trình duyệt ChatGPT: bỏ thông báo thêm giỏ trùng, tách dòng giá/số lượng trên điện thoại và giữ bố cục thanh toán một cột ở tablet.
+
+
+- Chuyển thanh toán sang thanh-toan.html, giữ giỏ hàng là sidebar.
+- Sửa chuyển tiếp hộp thoại để không chồng mờ; bỏ tiêu đề/kêu gọi tiếp tục trùng và giữ tiêu đề kết quả dưới header.
+- Sửa phục hồi trang tài khoản khi dùng Quay lại, cập nhật tên trang theo trạng thái và điều hướng tài khoản bằng liên kết thật.
+
+
+- Tách chi tiết sản phẩm, đăng nhập và đăng ký thành trang riêng; chuyển dữ liệu/logic dùng chung vào store.js.
+- Gộp giỏ hàng và form thanh toán thành hai tab trong sidebar; giữ thông tin khi chuyển tab và bước xác nhận.
+- Tham khảo cấu trúc WebEBU, giữ phong cách Garden và hoạt động hoàn toàn trong trình duyệt.
+
+
+- Thêm đăng ký họ tên/email trong phiên trình duyệt, tự đăng nhập và dùng lại hồ sơ sau đăng xuất trong cùng tab. Không lưu mật khẩu hoặc dùng backend.
+
+
+- Bỏ nhãn mẫu trong hộp thoại và thông báo đăng nhập.
+
+
+- Thêm đăng nhập tài khoản mẫu và đăng xuất; trạng thái lưu trong sessionStorage, không có backend hoặc mật khẩu.
+
+
+- Đồng bộ kích thước, khoảng cách, nút đóng và cuộn của hộp thoại; Escape/bấm nền tại bước xác nhận quay lại form.
+
+
+- Chỉnh viền và góc bo hộp thoại; thêm bước xác nhận đặt hàng với lựa chọn quay lại.
+
+
+- Thêm hộp thoại sau khi thêm vào giỏ với hai lựa chọn; hiển thị trạng thái xác nhận đặt hàng và nút tiếp tục mua sắm.
+
+
+- Thay mã tham chiếu bằng form thông tin nhận hàng có kiểm tra bắt buộc; thông tin chỉ hiển thị trong phiên, không lưu vào localStorage.
+
 
 - Bỏ nhãn và lưu ý về bản thử ngoài header/footer, giữ nguyên chức năng biểu mẫu và giỏ hàng.
 

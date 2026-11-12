@@ -311,3 +311,99 @@ summary::after{flex-shrink:0}
 
 .color-copy p{max-width:38ch;text-wrap:balance}
 .story-content p{text-wrap:balance}
+
+#addedModal,#confirmOrderModal{width:min(520px,calc(100% - 32px))}
+.added-actions{display:grid;gap:var(--space-sm);margin-top:var(--space-lg)}
+#orderResult{overflow-wrap:anywhere}
+
+.modal{border:1px solid var(--color-rule-2);border-radius:16px}
+
+/* Shared dialog sizing and spacing. */
+#checkoutModal{width:min(680px,calc(100% - 32px))}
+.modal-checkout{max-width:none;padding:var(--space-xl)}
+.modal-checkout h2{padding-right:44px;line-height:1.15}
+.modal-checkout .added-actions .btn{margin-top:0;white-space:normal}
+.modal-checkout p,.modal-details p,.cart-item p{overflow-wrap:anywhere}
+.modal-close{position:sticky;display:grid;float:right;top:8px;margin:8px 8px -52px 0;right:auto}
+.modal-alert{padding:0;margin:var(--space-lg) 0 0;background:transparent}
+#orderStatus{display:block;font-family:var(--font-display);font-size:var(--text-2xl);line-height:1.2}
+.drawer-head{flex-shrink:0}
+.drawer-body{overscroll-behavior:contain}
+.modal{overscroll-behavior:contain}
+@media(max-width:640px){.modal-checkout{padding:var(--space-xl) var(--space-lg)}.modal-details h2{padding-right:44px}.drawer-foot{max-height:45dvh;overflow-y:auto}}
+
+#accountModal{width:min(520px,calc(100% - 32px))}
+#accountModal p+p{margin-top:var(--space-md)}
+.account-sample{padding-block:var(--space-md);border-block:1px solid var(--color-rule);margin-top:var(--space-lg)}
+#accountToggle.is-signed-in{background:var(--color-paper-2)}
+
+#accountModal .btn.secondary{margin-top:var(--space-sm)}
+#accountModal .added-actions .btn{margin-top:0}
+#accountDisplayName,#accountDisplayEmail{overflow-wrap:anywhere}
+
+/* Store pages use the same Garden type and controls as the home page. */
+.product-page{padding-block:var(--space-xl) var(--space-3xl)}
+.product-page .modal-product{margin-top:var(--space-lg);height:auto;align-items:start;background:transparent}
+.product-page .modal-product>img{height:auto;max-height:none;aspect-ratio:800/920;object-fit:contain;border-radius:var(--radius-card)}
+.product-page .modal-details{height:auto;overflow:visible;padding:var(--space-lg) 0 var(--space-lg) var(--space-xl)}
+.product-page h1{font-size:var(--text-section);margin-bottom:var(--space-lg)}
+.account-page{padding-block:var(--space-2xl) var(--space-3xl);min-height:65dvh}
+.account-content{max-width:440px;margin-inline:auto}
+.account-content h1{font-size:var(--text-section);margin-bottom:var(--space-lg)}
+.account-content p{margin-block:var(--space-md)}
+.account-content .btn{width:100%;margin-top:var(--space-md)}
+.drawer{width:min(580px,100%);border-left:1px solid var(--color-rule)}
+#cartPanel{display:flex;flex-direction:column;flex:1;min-height:0}
+#cartPanel[hidden]{display:none}
+.drawer-checkout h2{font-size:var(--text-2xl);margin-bottom:var(--space-md)}
+.drawer-checkout h3{font-family:var(--font-body);font-size:var(--text-md);margin-top:var(--space-lg)}
+.drawer-checkout .btn{width:100%;margin-top:var(--space-lg)}
+.drawer-checkout p{overflow-wrap:anywhere}
+.drawer-checkout .modal-alert{margin-top:var(--space-lg)}
+@media(max-width:640px){.product-page .modal-details{padding:var(--space-lg) 0}.drawer-tabs{padding-inline:var(--space-md)}.account-page{padding-block:var(--space-xl) var(--space-2xl)}}
+
+/* Dedicated checkout page: receiver details and an order summary. */
+.checkout-page{max-width:1120px;padding-block:var(--space-xl) var(--space-3xl);min-height:65dvh}
+#checkoutContent{margin-top:var(--space-lg)}
+#checkoutContent>h1{font-size:var(--text-section);margin-bottom:var(--space-md)}
+#checkoutHelp{margin-bottom:var(--space-xl)}
+.checkout-page #checkoutForm{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:var(--space-2xl);align-items:start}
+.checkout-page h2{font-family:var(--font-body);font-size:var(--text-lg);line-height:1.4;margin-bottom:var(--space-md)}
+.checkout-summary{padding:var(--space-lg);background:var(--color-paper-2);border-radius:var(--radius-card)}
+.checkout-summary .btn{width:100%;margin-top:var(--space-lg)}
+.checkout-page #orderResult{max-width:760px}
+.checkout-page #orderResult .btn{margin-top:var(--space-lg)}
+.empty-checkout{padding-block:var(--space-xl)}
+.empty-checkout p{margin-block:var(--space-md) var(--space-lg)}
+.account-content .added-actions{gap:var(--space-sm)}
+.account-content .added-actions .btn{margin-top:0}
+.account-content [role="alert"]{color:var(--color-error)}
+@media(max-width:760px){.checkout-page #checkoutForm{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}.checkout-summary{padding:var(--space-md)}}
+
+/* Closing an overlay must not leave its contents above the next screen. */
+.modal:not(.open),.drawer:not(.open){transition:none}
+@media(max-width:900px){.checkout-page #checkoutForm{grid-template-columns:minmax(0,1fr);gap:var(--space-xl)}}
+.checkout-page #orderStatus{font-size:var(--text-section);margin-bottom:var(--space-lg);scroll-margin-top:var(--space-lg)}
+.cart-item strong{display:block;margin-top:var(--space-xs)}
+.cart-item .qty{margin-top:var(--space-sm)}
+
+/* Audit: consistent hit areas, keyboard focus and reading rhythm. */
+.support-nav a{display:inline-flex;align-items:center;min-height:44px}
+.support-nav{row-gap:0}
+.support-back{min-height:44px;display:inline-flex;align-items:center}
+.product-title{font-family:var(--font-body);font-size:var(--text-md);font-weight:500;letter-spacing:normal;line-height:1.45}
+.searchbox form{display:flex;align-items:center;gap:var(--space-sm)}
+.searchbox input{flex:1;min-width:0}
+.searchbox .btn{flex-shrink:0}
+.cart-item h3{font-family:var(--font-body);line-height:1.4}
+.cart-item .qty{max-width:100%}
+#orderResult{overflow-wrap:anywhere}
+@media(max-width:640px){.searchbox form{gap:var(--space-xs)}.searchbox form>svg{display:none}.searchbox .btn{padding-inline:var(--space-sm)}}
+
+/* Account forms reuse storefront fields and brand tokens. */
+.password-field{position:relative}
+.password-field input{padding-inline-end:72px}
+.password-toggle{position:absolute;inset-inline-end:4px;top:4px;min-height:40px;min-width:56px;padding:var(--space-xs);color:var(--color-ink);background:transparent;border:0;border-radius:var(--radius-card);font:inherit;cursor:pointer}
+.auth-switch{text-align:center;font-size:var(--text-sm)}
+.auth-switch a{text-decoration:underline;text-underline-offset:3px;font-weight:600}
+.account-content .fineprint{margin-top:var(--space-xs)}

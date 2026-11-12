@@ -1,115 +1,26 @@
-import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
-import {resolve,join} from 'node:path';
-import {mkdirSync,writeFileSync} from 'node:fs';
-const require=createRequire(resolve(process.env.HALLMARK_PLAYWRIGHT||process.cwd(),'check.js'));
-const {chromium}=require('playwright');
-const url=process.env.UNDO_TEST_URL||'http://localhost:3667/';
-const evidence=process.env.UNDO_EVIDENCE_DIR;
-if(evidence)mkdirSync(evidence,{recursive:true});
-const browser=await chromium.launch({channel:'chrome',headless:true});
-const context=await browser.newContext({viewport:{width:1280,height:1000},reducedMotion:'reduce'});
-const page=await context.newPage();
-const results=[],errors=[],submissions=[];
-context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
-page.on('pageerror',e=>errors.push(e.message));
-context.on('request',r=>{if(r.method()!=='GET'||['xhr','fetch'].includes(r.resourceType()))submissions.push(r.url())});
-const text=selector=>page.locator(selector).textContent();
-const click=selector=>page.locator(selector).click();
-const check=(label,condition)=>{assert.ok(condition,label);results.push(label)};
-const screenshot=async(name,selector)=>{if(!evidence)return;await page.locator('#toast:not(.show)').waitFor({state:'attached'});if(selector==='#checkoutModal')await page.locator(selector).evaluate(e=>e.scrollTop=0);await page.locator(selector||'body').screenshot({path:join(evidence,name),animations:'disabled'})};
-const cartOpen=()=>page.locator('#cartDrawer.open').waitFor({state:'visible'});
-const checkoutOpen=async()=>{await click('#checkoutBtn');await page.locator('#checkoutModal.open').waitFor({state:'visible'})};
-const addColour=async(id,qty=1)=>{await click('.mini-add');await page.selectOption('#productColor',id);for(let n=1;n<qty;n++)await click('#modalInc');await click('#modalAdd');await cartOpen()};
+const require=createRequire(import.meta.url);
+const {chromium}=require(process.env.HALLMARK_PLAYWRIGHT?process.env.HALLMARK_PLAYWRIGHT+'/node_modules/playwright':'playwright');
+const assert=require('node:assert/strict');const fs=require('node:fs');
+const base=process.env.UNDO_TEST_URL||'http://localhost:3667/';
+(async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});const context=await browser.newContext({viewport:{width:1280,height:900},reducedMotion:'reduce'});const page=await context.newPage();const errors=[],requests=[],checks=[];const check=(name,ok)=>{assert(ok,name);checks.push(name)};page.on('pageerror',e=>errors.push(e.message));context.on('request',r=>{if(r.method()!=='GET'||['fetch','xhr'].includes(r.resourceType()))requests.push(r.url())});
 try{
- await page.goto(url,{waitUntil:'networkidle'});
- await page.evaluate(()=>document.fonts.ready);
- check('One product with four colour choices',await page.locator('#productGrid .product').count()===1);
- check('Student project disclosure present',(await text('.announce')).includes('Student project'));
- check('Original section order preserved',(await page.locator('main section').evaluateAll(els=>els.map(e=>e.id).join('|')))==='top|collection|why||story|policy|faq|');
- if(evidence)await page.screenshot({path:join(evidence,'S1-home-desktop.png')});
- await click('#searchToggle');await page.locator('#searchInput').fill('not-a-mug');
- check('Unknown search has clear action',await page.locator('#clearFilter').count()===1);
- await click('#clearFilter');check('Clear search restores product',await page.locator('#productGrid .product').count()===1);
- await page.locator('#searchInput').fill('black');
- check('Search matches colour variant',(await page.locator('#productGrid img').getAttribute('src'))==='asset/onyx.webp');
- await click('#closeSearch');await click('.mini-add');
- check('Product details open',await page.locator('#productModal').getAttribute('aria-hidden')==='false');
- for(const id of ['sage','cream','blush','onyx']){
-  await page.selectOption('#productColor',id);
-  await page.waitForFunction(()=>{const img=document.querySelector('#modalImg');return img.complete&&img.naturalWidth>0});
-  check(`Colour ${id} updates loaded product image`,(await page.locator('#modalImg').getAttribute('src'))===`asset/${id}.webp`);
- }
- await page.selectOption('#productColor','blush');await click('#modalDec');
- check('Product quantity stays at least one',(await text('#modalQty'))==='1');
- await click('.product-help summary');check('Product care guidance expands',await page.locator('.product-help').evaluate(e=>e.open));
- await click('.product-help summary');await click('#modalInc');
- await screenshot('S2-product-desktop.png','#productModal');await click('#modalAdd');await cartOpen();
- check('Selected colour and quantity reach cart',(await text('#cartItems')).includes('Blush Pink')&&(await text('#cartCount'))==='2');
- check('Two mugs cost 498000',(await text('#cartFooter')).includes('498.000đ'));
- await screenshot('S3-cart-desktop.png','#cartDrawer');
- await page.keyboard.press('Escape');await page.reload({waitUntil:'networkidle'});await click('#cartToggle');await cartOpen();
- check('Cart survives reload',(await text('#cartCount'))==='2');
- await click('[data-dec="blush"]');check('Decrease recalculates subtotal',(await text('#cartFooter')).includes('249.000đ'));
- await checkoutOpen();
- check('Checkout has no free text personal data fields',await page.locator('#checkoutForm input,#checkoutForm textarea').count()===0);
- check('Checkout item summary matches cart',(await text('#checkoutItems')).includes('Hồng phấn × 1'));
- await click('#checkoutForm button[type="submit"]');
- check('Missing region prevents confirmation',await page.locator('#orderResult').evaluate(e=>e.hidden)&&(await text('#cartCount'))==='1');
- await page.selectOption('#shippingRegion','other');
- check('Other region keeps shipping range',(await text('#checkoutShipping'))==='25.000đ đến 40.000đ');
- check('Other region total includes shipping range',(await text('#checkoutTotal'))==='274.000đ đến 289.000đ');
- await page.selectOption('#shippingRegion','hanoi');
- check('Hanoi fee and total correct',(await text('#checkoutShipping'))==='15.000đ'&&(await text('#checkoutTotal'))==='264.000đ');
- await page.selectOption('[name="name"]','T1');
- await screenshot('S4-checkout-desktop.png','#checkoutModal');
- await click('#checkoutForm button[type="submit"]');
- check('Confirmation retains colour quantity region and total',/Hồng phấn × 1/.test(await text('#orderResult'))&&/Nội thành Hà Nội/.test(await text('#orderResult'))&&/264.000đ/.test(await text('#orderResult')));
- check('Confirmation clears cart',(await text('#cartCount'))==='0');
- check('Focus moves to confirmation',await page.locator('#orderStatus').evaluate(e=>e===document.activeElement));
- await screenshot('S5-confirmation-desktop.png','#checkoutModal');
- check('Trial values reset after confirmation',await page.locator('[name="name"]').inputValue()==='T-DEMO'&&await page.locator('#shippingRegion').inputValue()==='');
- check('No trial identity or email stored',await page.evaluate(()=>Object.entries(localStorage).every(([key,value])=>key==='undo_cart'&&!/T1|example.com/.test(value))));
- await click('#continueShop');await addColour('cream');await page.keyboard.press('Escape');await addColour('sage');
- check('Different colours remain separate cart items',await page.locator('.cart-item').count()===2);
- await click('[data-inc="cream"]');await click('[data-dec="cream"]');await checkoutOpen();
- check('Reopened checkout has current items and subtotal',(await text('#checkoutAmount'))==='498.000đ'&&(await text('#checkoutItems')).includes('Kem × 1')&&(await text('#checkoutItems')).includes('Xanh Sage × 1'));
- await page.selectOption('#shippingRegion','other');
- check('Free shipping applies to mixed-colour order',(await text('#checkoutShipping'))==='Miễn phí'&&(await text('#checkoutTotal'))==='498.000đ');
- await page.keyboard.press('Escape');await click('#cartToggle');await cartOpen();
- await click('[data-remove="cream"]');await click('[data-dec="sage"]');
- check('Remove and decrease to zero empty cart',(await text('#cartItems')).includes('Giỏ hàng đang trống'));
- await click('#shopAgain');await page.locator('#faq summary').first().click();check('FAQ expands',await page.locator('#faq details').first().evaluate(e=>e.open));
- check('Newsletter uses readonly sample email',await page.locator('#newsletterForm input').inputValue()==='demo@example.com'&&await page.locator('#newsletterForm input').evaluate(e=>e.readOnly));
- await click('#newsletterForm button');check('Newsletter confirms no storage',(await text('#toast')).includes('email chưa được lưu'));
- await screenshot('S10-newsletter-after.png','.newsletter');
- for(const width of [320,375,768,1280,1440,1920]){
-  await page.setViewportSize({width,height:900});await page.evaluate(()=>scrollTo(0,0));
-  check(`No horizontal overflow at ${width}`,await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
- }
- await page.setViewportSize({width:375,height:844});await click('#menuToggle');
- check('Mobile menu opens',await page.locator('#menuToggle').getAttribute('aria-expanded')==='true');
- await click('#mobileMenu a[href="#collection"]');check('Navigation closes mobile menu',await page.locator('#menuToggle').getAttribute('aria-expanded')==='false');
- await click('.mini-add');await page.waitForFunction(()=>document.querySelector('#productModal').contains(document.activeElement));
- await page.keyboard.down('Shift');await page.keyboard.press('Tab');await page.keyboard.up('Shift');
- check('Product dialog traps keyboard focus',await page.locator('#productModal').evaluate(e=>e.contains(document.activeElement)));
- await page.keyboard.press('Escape');check('Escape closes product dialog',await page.locator('#productModal').evaluate(e=>e.inert));
- await addColour('blush',2);await checkoutOpen();await page.selectOption('#shippingRegion','other');await page.selectOption('[name="name"]','T13');
- check('Mobile checkout has no inner overflow',await page.locator('#checkoutModal').evaluate(e=>e.scrollWidth<=e.clientWidth));
- await screenshot('S6-checkout-mobile.png','#checkoutModal');
- await page.locator('#checkoutModal [data-close]').focus();await page.keyboard.down('Shift');await page.keyboard.press('Tab');await page.keyboard.up('Shift');
- check('Checkout traps keyboard focus',await page.locator('#checkoutModal').evaluate(e=>e.contains(document.activeElement)));
- await click('#checkoutForm button[type="submit"]');
- check('Mobile retest code and free shipping reach confirmation',(await text('#orderResult')).includes('T13')&&(await text('#orderResult')).includes('498.000đ')&&(await text('#cartCount'))==='0');
- await screenshot('S7-confirmation-mobile.png','#checkoutModal');await page.keyboard.press('Escape');
- for(const file of ['chinh-sach.html','giao-hang-doi-tra.html','bao-hanh.html','bao-mat.html','dat-hang-thanh-toan.html','dieu-khoan-su-dung.html','cau-hoi-thuong-gap.html']){
-  const response=await page.goto(new URL(file,url).href);
-  check(`Policy loads and fits mobile: ${file}`,response.ok()&&await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
- }
- const nojsContext=await browser.newContext({javaScriptEnabled:false});const nojs=await nojsContext.newPage();await nojs.goto(url);
- check('Product content available without JavaScript',await nojs.locator('#productGrid .product').count()===1&&(await nojs.locator('#productGrid').textContent()).includes('249.000đ'));await nojsContext.close();
- check('No form submissions or fetch/XHR requests',submissions.length===0);
- check('No JavaScript exceptions',errors.length===0);
- const report={checkedAt:new Date().toISOString(),url,passed:results.length,checks:results,errors};
- writeFileSync('.hallmark/feature-checks.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
-}catch(error){await page.screenshot({path:'.hallmark/check-failure.png'}).catch(()=>{});throw error}finally{await browser.close()}
+await page.goto(base);await page.evaluate(()=>document.fonts.ready);check('six catalog models',await page.locator('#productGrid .product').count()===6);
+await page.locator('#searchToggle').click();await page.locator('#searchInput').fill('no-such-product');check('empty search',await page.locator('#clearFilter').count()===1);await page.locator('#clearFilter').click();check('clear search',await page.locator('#productGrid .product').count()===6);await page.locator('#searchInput').fill('Gaming');check('search by model',await page.locator('#productGrid .product').count()===1);await page.locator('#closeSearch').click();await page.locator('.product-name').first().click();check('product has own URL',page.url().includes('san-pham.html?id=p3v1'));check('product title',await page.locator('main h1').textContent()==='Gaming Edition');
+let variantCount=0;
+for(let g=1;g<=6;g++){await page.goto(new URL(`san-pham.html?id=p${g}v1`,base).href);const variants=await page.locator('#productColor option').evaluateAll(es=>es.map(e=>e.value));variantCount+=variants.length;for(const id of variants){await page.selectOption('#productColor',id);await page.locator('#modalImg').evaluate(e=>e.decode());check('variant loads '+id,page.url().endsWith('id='+id))}}
+check('22 variants',variantCount===22);
+await page.goto(new URL('san-pham.html?id=unknown',base).href);check('invalid product handled',await page.locator('main h1').textContent()==='Không tìm thấy sản phẩm');
+await page.goto(new URL('san-pham.html?id=p1v1',base).href);await page.locator('#modalInc').click();await page.locator('#modalAdd').click();check('added dialog',await page.locator('#addedModal').getAttribute('aria-hidden')==='false');await page.locator('#addedContinue').click();check('continue stays on product',page.url().includes('san-pham.html'));
+await page.reload();await page.locator('#cartToggle').click();check('cart saved after navigation/reload',await page.locator('#cartCount').textContent()==='2');await page.locator('[data-dec=p1v1]').click();check('quantity subtotal',await page.locator('#cartFooter').textContent().then(t=>t.includes('179.000đ')));await page.locator('#checkoutBtn').click();check('checkout has separate URL',page.url().endsWith('/thanh-toan.html'));check('checkout form in main',await page.locator('main #checkoutForm').count()===1);await page.locator('#checkoutForm button[type=submit]').click();check('required receiver fields',await page.locator('#confirmOrderModal').getAttribute('aria-hidden')==='true');await page.locator('[name=name]').fill('Khách <b> kiểm tra');await page.locator('[name=phone]').fill('0900000000');await page.locator('[name=address]').fill('Địa chỉ kiểm tra 123');await page.selectOption('#shippingRegion','other');check('other shipping range',await page.locator('#checkoutTotal').textContent()==='204.000đ đến 219.000đ');await page.selectOption('#shippingRegion','hanoi');check('Hanoi total',await page.locator('#checkoutTotal').textContent()==='194.000đ');await page.locator('#cartToggle').click();await page.locator('#cartDrawer [data-close]').click();check('sidebar preserves checkout draft',await page.locator('[name=name]').inputValue()==='Khách <b> kiểm tra');await page.locator('#checkoutForm button[type=submit]').click();check('confirm before clearing',await page.locator('#cartCount').textContent()==='1');await page.keyboard.press('Escape');check('Escape returns to checkout',await page.locator('#checkoutForm').isVisible());await page.locator('#checkoutForm button[type=submit]').click();await page.locator('#confirmOrderYes').click();check('order complete',await page.locator('#orderStatus').textContent()==='Đã xác nhận đặt hàng');check('untrusted receiver escaped',await page.locator('#orderResult').textContent().then(t=>t.includes('Khách <b> kiểm tra')));check('cart clears only after confirmation',await page.locator('#cartCount').textContent()==='0');check('personal info not in localStorage',await page.evaluate(()=>!JSON.stringify(localStorage).includes('0900000000')));await page.locator('#continueShop').click();await page.waitForURL('**/index.html#collection');
+await page.locator('#accountToggle').click();await page.waitForURL('**/dang-nhap.html');await page.locator('#showRegister').click();await page.waitForURL('**/dang-ky.html');await page.locator('[name=displayName]').fill('Khách kiểm tra');await page.locator('#registerForm [name=email]').fill('test@example.com');await page.locator('#registerForm [name=phone]').fill('0901234567');await page.locator('#registerPassword').fill('AuditOnly2026');await page.locator('#confirmPassword').fill('AuditOnly2026');await page.locator('#registerForm button[type=submit]').click();await page.locator('#accountSignedIn').waitFor({state:'visible'});check('registration signs in',await page.locator('#accountSignedIn').isVisible());await page.reload();check('session survives reload',await page.locator('#accountDisplayName').textContent()==='Khách kiểm tra');await page.locator('#sampleLogout').click();await page.goto(base+'dang-nhap.html');await page.locator('#loginForm [name=email]').fill('test@example.com');await page.locator('#loginPassword').fill('AuditOnly2026');await page.locator('#sampleLogin').click();await page.locator('#accountSignedIn').waitFor({state:'visible'});check('can log in again',await page.locator('#accountSignedIn').isVisible());
+for(const width of [320,375,768,1024,1280]){await page.setViewportSize({width,height:900});for(const file of ['index.html','san-pham.html?id=p3v1','dang-nhap.html','dang-ky.html','thanh-toan.html']){await page.goto(new URL(file,base).href);check(`no overflow ${width} ${file}`,await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.locator('#cartToggle').click();check(`drawer fits ${width} ${file}`,await page.locator('#cartDrawer').evaluate(e=>e.scrollWidth<=e.clientWidth));await page.keyboard.press('Escape')}}
+await page.goto(new URL('san-pham.html?id=p1v1',base).href);await page.locator('#modalAdd').click();await page.locator('#addedCart').click();await page.locator('#cartDrawer [data-close]').focus();await page.keyboard.down('Shift');await page.keyboard.press('Tab');await page.keyboard.up('Shift');check('sidebar traps focus',await page.locator('#cartDrawer').evaluate(e=>e.contains(document.activeElement)));await page.keyboard.press('Escape');
+await page.setViewportSize({width:1280,height:900});for(const [file,name] of [['san-pham.html?id=p1v1','product'],['dang-nhap.html','login']]){await page.goto(new URL(file,base).href);await page.evaluate(()=>document.fonts.ready);await page.screenshot({path:`/tmp/undo-${name}-page.png`,fullPage:true})}
+
+await page.goto(base);await page.locator('#faq summary').first().click();check('FAQ opens',await page.locator('#faq details').first().evaluate(e=>e.open));await page.locator('#newsletterForm input[type=email]').fill('audit@example.com');await page.locator('#newsletterForm button').click();check('newsletter feedback',await page.locator('#toast').textContent().then(t=>t.includes('Cảm ơn')));await page.setViewportSize({width:375,height:844});await page.evaluate(()=>scrollTo(0,0));await page.locator('#menuToggle').click();await page.locator('#mobileMenu a').first().click();check('mobile menu closes',await page.locator('#menuToggle').getAttribute('aria-expanded')==='false');await page.locator('#cartToggle').click();const scrollBefore=await page.evaluate(()=>scrollY);await page.locator('#cartDrawer [data-close]').click();check('close preserves scroll',Math.abs(await page.evaluate(()=>scrollY)-scrollBefore)<2);
+for(const file of ['chinh-sach.html','giao-hang-doi-tra.html','bao-hanh.html','bao-mat.html','dat-hang-thanh-toan.html','dieu-khoan-su-dung.html','cau-hoi-thuong-gap.html','huong-dan-su-dung.html']){const response=await page.goto(new URL(file,base).href);check('support page '+file,response.ok()&&await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth))}
+const nojs=await browser.newContext({javaScriptEnabled:false});const np=await nojs.newPage();await np.goto(base);check('static catalog without JS',await np.locator('#productGrid .product').count()===6);await nojs.close();
+await page.goto(new URL('san-pham.html?id=p2v1',base).href);await page.locator('#cartToggle').click();await page.locator('#checkoutBtn').click();await page.screenshot({path:'/tmp/undo-sidebar-mobile.png'});await page.keyboard.press('Escape');
+check('no page errors',errors.length===0);check('no form/network submissions',requests.length===0);const result={checkedAt:new Date().toISOString(),url:base,passed:checks.length,checks,errors};fs.writeFileSync('.hallmark/store-page-checks.json',JSON.stringify(result,null,2));console.log(JSON.stringify({passed:checks.length,errors}));
+}finally{await browser.close()}})().catch(e=>{console.error(e);process.exit(1)});

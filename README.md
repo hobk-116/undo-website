@@ -28,13 +28,13 @@ Nhấn `Ctrl + C` trong Terminal để dừng server. Có thể mở `index.html
 - Giỏ hàng có thêm, xóa, tăng giảm số lượng, tính tạm tính và lưu bằng localStorage.
 - Form đặt hàng demo, FAQ, form email demo và menu điện thoại; hỗ trợ desktop, tablet và mobile.
 
-Form đặt hàng chỉ chọn mã lượt thử và khu vực mẫu, không nhập thông tin cá nhân. Checkout và kết quả hiển thị phân loại, số lượng, tiền hàng, phí giao và tổng dự kiến. Phí ngoài nội thành Hà Nội giữ khoảng 25.000đ đến 40.000đ khi chưa đủ mức miễn phí, không tự chốt một mức cụ thể. Form email chỉ đọc dùng sẵn `demo@example.com`, không gửi hoặc lưu email. Thông số sản phẩm, phí giao hàng và chính sách vẫn là nội dung dự kiến; website không gửi đơn hay nhận thanh toán.
+Form đặt hàng gồm họ tên, số điện thoại, địa chỉ, khu vực giao hàng; email và ghi chú tùy chọn. Dữ liệu chỉ dùng trong phiên, không gửi máy chủ hoặc lưu localStorage. Checkout và kết quả hiển thị phân loại, số lượng, tiền hàng, phí giao và tổng dự kiến. Phí ngoài nội thành Hà Nội giữ khoảng 25.000đ đến 40.000đ khi chưa đủ mức miễn phí, không tự chốt một mức cụ thể. Form email cho nhập địa chỉ email, kiểm tra định dạng và xóa ô sau khi đăng ký; không gửi hoặc lưu email. Thông số sản phẩm, phí giao hàng và chính sách vẫn là nội dung dự kiến; website không gửi đơn hay nhận thanh toán.
 
 ## Cấu trúc dự án
 
 | Đường dẫn | Nội dung |
 | --- | --- |
-| `index.html` | Nội dung, danh sách `products` và logic tương tác |
+| `index.html` | Trang chủ và bộ sưu tập |
 | `huong-dan-su-dung.html` | Hướng dẫn sử dụng, vệ sinh và an toàn cho Everyday Mug 400 ml |
 | `chinh-sach.html` | Trang tổng hợp chính sách |
 | `giao-hang-doi-tra.html`, `cau-hoi-thuong-gap.html`, `bao-hanh.html` | Các trang thông tin hỗ trợ |
@@ -58,7 +58,7 @@ Website dùng Hallmark Garden với nền trắng, xanh UnDo, tiêu đề Vollko
 
 Logo mới nằm ở `asset/logo.png`. Tám ảnh trong `asset/` đã được thay logo bằng ChatGPT Image: bốn ảnh bối cảnh JPG và bốn ảnh sản phẩm WebP. `asset_old/` giữ nguyên bộ cũ để đối chiếu hoặc khôi phục.
 
-Sửa giá, tên và phân loại trong biến `products` của `index.html`. Khi thay ảnh, cập nhật đường dẫn trong cả `products` và danh sách HTML hiển thị khi JavaScript tắt.
+Sửa giá, tên và phân loại trong biến `products` của `store.js`. Khi thay ảnh, cập nhật đường dẫn trong cả `products` và danh sách HTML hiển thị khi JavaScript tắt.
 
 ## Kiểm tra
 
@@ -87,3 +87,24 @@ Vercel dùng cấu hình HTML tĩnh trong `vercel.json`. `.vercelignore` chỉ c
 Xem thay đổi bằng `git status` và `git diff`; chỉ tạo commit, thêm remote hoặc push khi có yêu cầu.
 
 Website chưa có backend, quản lý kho, tài khoản, dịch vụ đơn hàng hay thanh toán. Trước khi mở bán, cần xác nhận thông số sản phẩm, chính sách khách hàng và kết nối các dịch vụ thực tế.
+
+### Tài khoản mẫu
+
+Nút tài khoản dẫn tới form đăng nhập email và mật khẩu. Khóa `undo_sample_session` trong sessionStorage giữ trạng thái đăng nhập khi tải lại và bị xóa khi đăng xuất. Không có xác thực backend hay đồng bộ tài khoản.
+
+Đăng ký tại trang dang-ky.html lưu tên/email vào `undo_session_profile` trong sessionStorage. Đăng xuất xóa trạng thái đăng nhập; hồ sơ còn trong tab để đăng nhập lại. Đây không phải xác thực email hay tài khoản máy chủ.
+
+### Các trang mua sắm
+
+- `san-pham.html?id=p1v1`: trang chi tiết sản phẩm, chọn phân loại và số lượng.
+- `dang-nhap.html`, `dang-ky.html`: đăng nhập/đăng ký trong tab, không có backend.
+- `store.js`: dữ liệu sản phẩm và logic dùng chung. Không cần build hoặc dependency mới.
+- Giỏ hàng là sidebar, nút Tiến hành thanh toán dẫn đến `thanh-toan.html`. Form nhận hàng và tóm tắt đơn nằm trên trang thanh toán; quay lại từ hộp xác nhận giữ thông tin. Không lưu thông tin nhận hàng lên máy chủ.
+
+Tham khảo cấu trúc trang và luồng từ `Desktop/WebEBU/app.js`, không dùng phần server, điểm thưởng hoặc các số liệu người xem của dự án tham khảo.
+
+Bộ kiểm tra `.hallmark/check-site.mjs` đã được thay để kiểm tra các trang mới và sidebar và trang thanh toán riêng, thay cho giả định cũ một sản phẩm/bốn màu. Chạy bằng Chrome và Playwright như hướng dẫn ở trên.
+
+### Tài khoản cục bộ
+
+Đăng ký yêu cầu họ tên, email, điện thoại và mật khẩu nhập lại. Đăng nhập kiểm tra email và mật khẩu với hồ sơ trong phiên hiện tại. Dùng Web Crypto PBKDF2 SHA-256 (600.000 vòng, salt ngẫu nhiên 16 byte); sessionStorage chỉ lưu verifier, không lưu mật khẩu thô. Hồ sơ kết thúc khi đóng tab, không có đồng bộ hay khôi phục mật khẩu bằng email. Đây là mô phỏng phía trình duyệt, không phải ranh giới xác thực an toàn cho dịch vụ thật. Không thêm backend.
