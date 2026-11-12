@@ -8,7 +8,7 @@
 @import url('./tokens.css');
 @import url('./base.css');
 
-html{scroll-behavior:smooth;scroll-padding-top:var(--space-3xl)}
+html{scroll-behavior:smooth;scroll-padding-top:var(--space-3xl);scrollbar-gutter:stable}
 body{color:var(--color-ink-2);font-synthesis:none}
 html:has(body.noscroll){overflow-y:hidden}
 button{cursor:pointer}a{text-decoration:none}svg{flex-shrink:0}
@@ -106,7 +106,7 @@ input::placeholder,textarea::placeholder{color:var(--color-muted);opacity:1}
 .story-inner{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-columns);align-items:center}
 .story-content{padding-bottom:var(--space-2xl)}
 .story-content p+p{margin-top:var(--space-md)}
-.story-content .btn{margin-top:var(--space-lg)}
+.story-content .btn,.color-copy .btn{margin-top:var(--space-lg)}
 .story-image{align-self:center;border-radius:var(--radius-card);overflow:clip}
 .story-image img{height:auto;object-fit:contain}
 .policy-wrap{border-block:1px solid var(--color-rule)}
@@ -225,10 +225,10 @@ input::placeholder,textarea::placeholder{color:var(--color-muted);opacity:1}
 @media(max-width:640px){.product-art>a{height:auto}.product-art img{height:auto;aspect-ratio:800/920}}
 
 /* Trang hỗ trợ */
-.support-header{background:var(--color-paper);border-bottom:1px solid var(--color-rule)}
+.support-header{position:sticky;top:0;z-index:var(--z-sticky-nav);background:var(--color-paper);border-bottom:1px solid var(--color-rule)}
 .support-header .nav{height:53.333px}
-.support-nav{display:flex;align-items:center;gap:var(--space-lg);flex-wrap:wrap}
-.support-nav a{font-size:var(--text-sm)}
+.support-nav{display:flex;align-items:center;justify-content:flex-end;gap:var(--gap-columns);flex-wrap:wrap;margin-left:auto}
+.support-nav a{font-size:var(--text-sm);font-weight:500;white-space:nowrap}
 .support-nav a:hover,.support-menu a:hover,.support-content a:hover{text-decoration:underline;text-underline-offset:4px}
 .support-page{padding-block:var(--space-2xl) var(--space-3xl)}
 .support-back{display:inline-block;margin-bottom:var(--space-lg);font-size:var(--text-sm);text-decoration:underline;text-underline-offset:4px}
@@ -251,7 +251,7 @@ input::placeholder,textarea::placeholder{color:var(--color-muted);opacity:1}
 .support-content details[open] summary::after{content:'−'}
 .support-content details p{padding-block:var(--space-sm)}
 .support-footer{padding-block:var(--space-lg);border-top:1px solid var(--color-rule);color:var(--color-muted);font-size:var(--text-sm)}
-@media(max-width:640px){.support-header .nav{height:auto;min-height:48px;gap:var(--space-md);padding-block:var(--space-xs)}.support-nav{gap:var(--space-md);justify-content:flex-end}.support-page{padding-block:var(--space-xl) var(--space-2xl)}.support-layout{grid-template-columns:minmax(0,1fr);gap:var(--space-xl);margin-top:var(--space-xl)}}
+@media(max-width:900px){.support-header .nav{height:auto;min-height:48px;gap:var(--space-md);padding-block:var(--space-xs)}.support-nav{gap:var(--space-md);justify-content:flex-end}.support-page{padding-block:var(--space-xl) var(--space-2xl)}.support-layout{grid-template-columns:minmax(0,1fr);gap:var(--space-xl);margin-top:var(--space-xl)}}
 
 .support-table{overflow-x:auto;margin-block:var(--space-md)}
 .support-table table{border-collapse:collapse;table-layout:fixed;width:100%;font-size:var(--text-sm)}
@@ -298,3 +298,16 @@ select option:checked{background:var(--color-accent-2)}
 .modal-product>img[src*="/Gaming_Edition_"]{object-fit:contain;background:var(--product-gaming-background)}
 @media(max-width:640px){.modal-product>img{aspect-ratio:800/920}}
 @media(min-width:641px){.modal-product{height:calc(50cqw * 920 / 800)}}
+
+/* Keep short reading blocks balanced without fixed line breaks. */
+.faq-grid h2{max-width:13ch}
+summary>span{min-width:0;text-wrap:pretty}
+summary::after{flex-shrink:0}
+.short-feature,.policy-title,.policy-desc,.product-description,.fineprint,.announce,.demo-label p{ text-wrap:pretty }
+.support-content h3{margin-top:var(--space-md);margin-bottom:var(--space-sm);text-wrap:balance}
+.support-content li{ text-wrap:pretty }
+.checkout-links{display:flex;flex-wrap:wrap;gap:var(--space-sm) var(--space-md)}
+.checkout-links a{display:inline-block}
+
+.color-copy p{max-width:38ch;text-wrap:balance}
+.story-content p{text-wrap:balance}

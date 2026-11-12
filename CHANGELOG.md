@@ -2,6 +2,34 @@
 
 Ghi thay đổi theo ngày. Dự án chưa gán phiên bản phát hành.
 
+## 2026-11-12
+
+- Giữ chỗ cho thanh cuộn để bố cục không dịch khi mở hoặc đóng giỏ hàng và hộp thoại.
+
+
+- Bỏ nhãn Sáu mẫu cốc Undo; khôi phục focus khi đóng hộp thoại mà không cuộn trang.
+
+
+- Tách nút chọn mẫu cốc khỏi đoạn mô tả và cân dòng hai khối chọn mẫu, câu chuyện.
+
+
+- Rà soát ngắt dòng: bỏ ngắt cứng ở tiêu đề FAQ, cân dòng câu hỏi và nội dung ngắn, giữ liên kết hỗ trợ thành từng cụm.
+
+
+- Khôi phục nhãn dự án tiếng Anh theo commit trước; cập nhật phiên bản đường dẫn bốn ảnh để tải ảnh mới.
+
+
+- Giữ chú thích trên ảnh hero bằng tiếng Việt theo yêu cầu.
+
+
+- Chỉnh bốn ảnh bối cảnh bằng ChatGPT Image: bỏ chữ ghép, thay mẫu cốc và chuyển nền sang trắng trung tính.
+
+
+- Chuyển chú thích dự án sang tiếng Việt và bỏ chú thích tiếng Anh ở hướng dẫn sử dụng.
+
+
+- Đồng bộ điều hướng header các trang hỗ trợ với trang chủ và căn các mục sang phải.
+
 ## 2026-11-06
 
 ### Hướng dẫn sử dụng
