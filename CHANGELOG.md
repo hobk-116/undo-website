@@ -1,5 +1,25 @@
 # Changelog
 
+- Giảm logo về mức trung gian: 96px desktop, 80px mobile và 112px footer.
+
+- Tăng kích thước chữ logo UnDo bằng căn lại khoảng trong suốt của asset; cân header 64px desktop, 56px mobile và logo footer.
+
+- Cân lại khối Thiết kế: hai cột ngang nhau, ảnh và nội dung căn đỉnh; tiêu đề nằm trong cột nội dung.
+
+- Dùng ChatGPT Image tạo ảnh tập trung phần giữa hai cốc; cập nhật desk-center.jpg và cân khối Thiết kế thành ảnh 2/5, nội dung 3/5, một cột trên mobile.
+
+- Sửa 5 điểm audit visual: khối Thiết kế dùng tiêu đề và ảnh toàn hàng, nội dung gọn bên dưới; tăng logo, giảm khoảng đệm và cân lại cỡ tiêu đề.
+
+- Hiển thị đầy đủ ảnh ở catalog, nội dung trang chủ, chi tiết và giỏ hàng; bỏ crop ảnh, cho các khối nội dung xuống dòng từ màn hình tablet.
+
+- Đồng bộ icon Tabler Outline cho header, hộp thoại, số lượng, mật khẩu và các lợi ích; giữ nhãn Xóa bằng chữ. SVG và giấy phép lưu cục bộ.
+
+- Thu nhỏ chữ nút Xóa trong giỏ, bỏ nền tròn khi rê chuột và giữ vùng bấm 44px.
+
+- Đổi nút xóa từng sản phẩm trong giỏ từ dấu × thành chữ “Xóa” để phân biệt với nút đóng giỏ hàng.
+
+- Tách catalog sang bo-suu-tap.html; cập nhật liên kết mua sắm và tìm kiếm, giữ sidebar giỏ hàng và trang chi tiết.
+
 - Thay đăng nhập một nút bằng form email/mật khẩu theo WebEBU; đăng ký gồm họ tên, email, điện thoại, mật khẩu và nhập lại. Có hiện/ẩn mật khẩu, kiểm tra thông tin, lỗi đăng nhập và trạng thái xử lý. Chỉ lưu hồ sơ và bộ kiểm tra mật khẩu PBKDF2 có salt trong sessionStorage; không có backend.
 
 - Xóa dòng Khách UnDo và lời giới thiệu dư trong đăng nhập/đăng ký; chỉ hiển thị tên hồ sơ khi người dùng đã đăng ký. Giữ nguyên thao tác tài khoản.

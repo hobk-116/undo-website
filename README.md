@@ -108,3 +108,7 @@ Bộ kiểm tra `.hallmark/check-site.mjs` đã được thay để kiểm tra c
 ### Tài khoản cục bộ
 
 Đăng ký yêu cầu họ tên, email, điện thoại và mật khẩu nhập lại. Đăng nhập kiểm tra email và mật khẩu với hồ sơ trong phiên hiện tại. Dùng Web Crypto PBKDF2 SHA-256 (600.000 vòng, salt ngẫu nhiên 16 byte); sessionStorage chỉ lưu verifier, không lưu mật khẩu thô. Hồ sơ kết thúc khi đóng tab, không có đồng bộ hay khôi phục mật khẩu bằng email. Đây là mô phỏng phía trình duyệt, không phải ranh giới xác thực an toàn cho dịch vụ thật. Không thêm backend.
+
+Catalog sản phẩm nằm tại `bo-suu-tap.html`, tách khỏi trang chủ.
+
+Icon sử dụng Tabler Icons Outline (MIT), SVG gốc và giấy phép tại `asset/icons/tabler/`. Không tải thư viện icon từ CDN khi chạy trang.
