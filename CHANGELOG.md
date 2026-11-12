@@ -4,6 +4,9 @@ Ghi thay đổi theo ngày. Dự án chưa gán phiên bản phát hành.
 
 ## 2026-11-12
 
+- Bỏ nhãn và lưu ý về bản thử ngoài header/footer, giữ nguyên chức năng biểu mẫu và giỏ hàng.
+
+
 - Giữ chỗ cho thanh cuộn để bố cục không dịch khi mở hoặc đóng giỏ hàng và hộp thoại.
 
 
