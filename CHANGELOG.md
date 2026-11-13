@@ -1,5 +1,7 @@
 # Changelog
 
+- Bổ sung thông tin Size M (400ml) vào tên phân loại và từ khóa tìm kiếm của tất cả mẫu cốc trong store.js.
+
 - Sửa cấu hình Vercel loại nhầm bo-suu-tap.html khỏi gói triển khai, gây mất trang catalog trên production.
 
 - Giảm logo về mức trung gian: 96px desktop, 80px mobile và 112px footer.
