@@ -26,7 +26,7 @@ Không đổi `id`, `name`, `data-*`, khóa localStorage hoặc selector JavaScr
 - Ngoại trừ header và footer, mọi phần trên website phải được trình bày như một cửa hàng thực tế, kể cả khi chức năng được mô phỏng trong trình duyệt.
 - Không hiển thị nhãn hoặc lời chú thích như “thử”, “thử nghiệm”, “demo”, “mẫu”, “minh họa”, “mô phỏng”, “dự án học phần” hay thông báo kỹ thuật về việc không có backend trong nội dung sản phẩm, tài khoản, giỏ hàng, thanh toán, hộp thoại và các trang hỗ trợ. Quy tắc này áp dụng khi các từ đó mô tả trạng thái thử nghiệm, không cấm cách gọi sản phẩm như “mẫu cốc”.
 - Dùng nhãn, hướng dẫn, thông báo lỗi và trạng thái hoàn tất theo ngữ cảnh mua sắm thông thường. Giữ các giới hạn cần thiết trong logic; không tự thêm backend, gửi dữ liệu, thu tiền hoặc dịch vụ thật chỉ để làm giao diện giống cửa hàng thật.
-- Header và footer là nơi giữ thông tin về tính chất dự án. Tài liệu kỹ thuật và báo cáo bàn giao vẫn phải mô tả đúng chức năng thực tế và phần chưa triển khai.
+- Trên website, chỉ ghi thông tin về tính chất thử nghiệm, mô phỏng hoặc học phần ở header và footer, theo cách hiện tại. Tài liệu kỹ thuật và báo cáo bàn giao vẫn phải mô tả đúng chức năng thực tế và phần chưa triển khai.
 
 ## Giao diện và ảnh
 

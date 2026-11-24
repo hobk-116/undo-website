@@ -1,5 +1,9 @@
 # Changelog
 
+- Đổi lại tiêu đề khối thành Thiết kế và bổ sung khối Tính năng nổi bật kèm ảnh đế giác hút và lõi inox giữ nhiệt ngay bên dưới.
+
+- Cập nhật khối Thiết kế trên trang chủ thành giới thiệu kiểu dáng và kích thước cốc (Size M, 400 ml); tạo và nhúng ảnh kich-thuoc-dang-coc.jpg với phong cách tối giản.
+
 - Bổ sung thông tin Size M (400ml) vào tên phân loại và từ khóa tìm kiếm của tất cả mẫu cốc trong store.js.
 
 - Sửa cấu hình Vercel loại nhầm bo-suu-tap.html khỏi gói triển khai, gây mất trang catalog trên production.

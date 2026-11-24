@@ -482,3 +482,19 @@ summary::after{flex-shrink:0}
 .footer-brand .brand{width:112px;height:48px}
 .footer-brand .brand img{width:112px;height:112px}
 @media(max-width:900px){.header .brand,.support-header .brand{width:80px;height:40px}.header .brand img,.support-header .brand img{width:80px;height:80px}}
+
+/* Features section under design */
+.features-section{padding-block:var(--space-2xl);background:var(--color-paper)}
+.features-head{text-align:center;max-width:640px;margin-inline:auto;margin-bottom:var(--space-xl)}
+.features-head h2{font-size:var(--text-section);margin-bottom:var(--space-xs)}
+.features-head p{font-size:var(--text-md);color:var(--color-muted)}
+.features-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-xl)}
+.feature-card{display:flex;flex-direction:column;gap:var(--space-md)}
+.feature-media{overflow:clip;border-radius:var(--radius-card);background:var(--color-paper-2)}
+.feature-media img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius-card);filter:contrast(1.04) saturate(.96)}
+.feature-body h3{font-family:var(--font-display);font-size:var(--text-xl);font-weight:600;color:var(--color-ink);margin-bottom:var(--space-xs)}
+.feature-body p{font-size:var(--text-md);color:var(--color-ink-2);line-height:1.6}
+@media(max-width:768px){
+  .features-section{padding-block:var(--space-xl)}
+  .features-grid{grid-template-columns:minmax(0,1fr);gap:var(--space-lg)}
+}
