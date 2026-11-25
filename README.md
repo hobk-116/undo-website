@@ -99,7 +99,10 @@ Nút tài khoản dẫn tới form đăng nhập email và mật khẩu. Khóa `
 - `san-pham.html?id=p1v1`: trang chi tiết sản phẩm, chọn phân loại và số lượng.
 - `dang-nhap.html`, `dang-ky.html`: đăng nhập/đăng ký trong tab, không có backend.
 - `store.js`: dữ liệu sản phẩm và logic dùng chung. Không cần build hoặc dependency mới.
-- Giỏ hàng là sidebar, nút Tiến hành thanh toán dẫn đến `thanh-toan.html`. Form nhận hàng và tóm tắt đơn nằm trên trang thanh toán; quay lại từ hộp xác nhận giữ thông tin. Không lưu thông tin nhận hàng lên máy chủ.
+- `theo-doi-don-hang.html`: tra cứu bằng mã đơn trong cùng trình duyệt. Mã và bản tóm tắt được lưu cục bộ, không gồm thông tin người nhận.
+- `lich-su-mua-hang.html`: liệt kê các đơn đặt khi đang đăng nhập trong cùng tab. Liên kết đơn với tài khoản kết thúc khi đóng tab.
+- `contact.js`: nút Liên hệ nổi dùng lại liên kết Facebook và email ở footer.
+- Giỏ hàng là sidebar, nút Tiến hành thanh toán dẫn đến `thanh-toan.html`. Form nhận hàng và tóm tắt đơn nằm trên trang thanh toán; quay lại từ hộp xác nhận giữ thông tin. Thanh toán hỗ trợ COD và mô phỏng chuyển khoản với trạng thái Chờ thanh toán. Website không thu tiền, xác minh giao dịch hay nhận trạng thái từ đơn vị vận chuyển. Thông tin nhận hàng chỉ xuất hiện tại bước đặt hàng và xác nhận.
 
 Tham khảo cấu trúc trang và luồng từ `Desktop/WebEBU/app.js`, không dùng phần server, điểm thưởng hoặc các số liệu người xem của dự án tham khảo.
 

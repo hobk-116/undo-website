@@ -75,8 +75,10 @@ unicode: "eb55"
 </svg></button></form><div class="wrap"><p>Gợi ý: Basic, Minimalism, Gaming Edition, Art, Meme</p></div></div>
 <main id="main" class="wrap checkout-page"><a class="support-back" href="bo-suu-tap.html">Tiếp tục mua sắm</a><section id="emptyCheckout" class="empty-checkout" hidden><h1>Giỏ hàng đang trống</h1><p>Chọn sản phẩm trước khi thanh toán.</p><a class="btn" href="bo-suu-tap.html">Xem sản phẩm</a></section><div id="checkoutContent">
 <h1>Thanh toán</h1><p id="checkoutHelp">Kiểm tra sản phẩm, số lượng và khu vực giao hàng trước khi xác nhận.</p>
-<div id="orderResult" hidden role="status"></div>
-<form id="checkoutForm" aria-describedby="checkoutHelp"><div class="checkout-receiver">
+<div id="orderResult" hidden></div>
+<p id="orderSaveError" class="order-error" role="alert" hidden></p>
+<noscript><p>Bật JavaScript để đặt hàng.</p></noscript>
+<form id="checkoutForm" aria-describedby="checkoutHelp" hidden><div class="checkout-receiver">
 <h2>Thông tin nhận hàng</h2>
 <label class="field">Họ và tên<input name="name" autocomplete="shipping name" required maxlength="100" placeholder="Nhập họ và tên người nhận" /></label>
 <label class="field">Số điện thoại<input name="phone" type="tel" inputmode="tel" autocomplete="shipping tel" required pattern="[+]?[0-9 ]{8,20}" maxlength="20" aria-describedby="phoneHelp" placeholder="Nhập số điện thoại" /></label>
@@ -85,15 +87,15 @@ unicode: "eb55"
 <label class="field">Địa chỉ nhận hàng<input name="address" autocomplete="shipping street-address" required minlength="5" maxlength="300" placeholder="Số nhà, đường, phường/xã, tỉnh/thành phố" /></label>
 <label class="field">Khu vực giao hàng<select name="region" id="shippingRegion" required aria-describedby="shippingNote"><option value="">Chọn khu vực</option><option value="hanoi">Nội thành Hà Nội</option><option value="other">Các khu vực còn lại</option></select></label>
 <label class="field">Ghi chú (không bắt buộc)<textarea name="note" maxlength="500" placeholder="Lưu ý cho người giao hàng"></textarea></label>
-<label class="field">Phương thức thanh toán<select name="payment"><option>Thanh toán khi nhận hàng (COD)</option></select></label></div><section class="checkout-summary" aria-label="Tóm tắt đơn hàng"><h2>Sản phẩm đã chọn</h2><ul id="checkoutItems" class="order-items"></ul>
+<label class="field">Phương thức thanh toán<select name="payment"><option value="cod">Thanh toán khi nhận hàng (COD)</option><option value="transfer">Chuyển khoản ngân hàng</option></select></label></div><section class="checkout-summary" aria-label="Tóm tắt đơn hàng"><h2>Sản phẩm đã chọn</h2><ul id="checkoutItems" class="order-items"></ul>
 <div aria-live="polite" aria-atomic="true"><dl class="order-totals"><div><dt>Tiền sản phẩm</dt><dd id="checkoutAmount">0đ</dd></div><div><dt>Phí giao dự kiến</dt><dd id="checkoutShipping">Chọn khu vực</dd></div><div class="order-total"><dt>Tổng dự kiến</dt><dd id="checkoutTotal">Chọn khu vực</dd></div></dl><p id="shippingNote" class="fineprint">Chọn khu vực để xem chi phí dự kiến.</p></div>
 <p class="checkout-links"><a href="giao-hang-doi-tra.html">Giao hàng và đổi trả</a> <a href="bao-mat.html">Bảo mật</a></p>
 
 <button class="btn" type="submit">Xác nhận</button></section></form></div></main><footer class="footer"><div class="wrap"><div class="footer-cols">
   <div class="footer-brand"><a class="brand" href="index.html#top"><img src="asset/logo.png" alt="Undo" /></a><p>Spill Less. Live More.<br/>Cốc chống đổ cho một ngày tự tin hơn.</p><div class="demo-label"><p>Student project - E-Business, Hanoi University</p><p>UnDo là dự án học phần. Sản phẩm và các chính sách thương mại là nội dung mô phỏng, không áp dụng cho giao dịch thực tế. Website không nhận đơn hàng hoặc thanh toán thật.</p></div></div>
   <div><h3>Khám phá</h3><a href="bo-suu-tap.html">Bộ sưu tập</a><a href="index.html#why">Tính năng</a><a href="index.html#story">Câu chuyện thương hiệu</a></div>
-  <div><h3>Hỗ trợ</h3><a href="giao-hang-doi-tra.html">Giao hàng & đổi trả</a><a href="huong-dan-su-dung.html">Hướng dẫn sử dụng</a><a href="cau-hoi-thuong-gap.html">Câu hỏi thường gặp</a><a href="bao-hanh.html">Chính sách bảo hành</a><a href="dat-hang-thanh-toan.html">Đặt hàng và thanh toán</a><a href="bao-mat.html">Chính sách bảo mật</a><a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a></div>
-  <div><h3>Liên hệ Undo</h3><a href="https://www.facebook.com/profile.php?id=61596105778203" target="_blank" rel="noopener noreferrer">Facebook</a><a href="mailto:lal347092@gmail.com">Email</a></div>
+  <div><h3>Hỗ trợ</h3><a href="theo-doi-don-hang.html">Theo dõi đơn hàng</a><a href="giao-hang-doi-tra.html">Giao hàng & đổi trả</a><a href="huong-dan-su-dung.html">Hướng dẫn sử dụng</a><a href="cau-hoi-thuong-gap.html">Câu hỏi thường gặp</a><a href="bao-hanh.html">Chính sách bảo hành</a><a href="dat-hang-thanh-toan.html">Đặt hàng và thanh toán</a><a href="bao-mat.html">Chính sách bảo mật</a><a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a></div>
+  <div data-contact-links><h3>Liên hệ Undo</h3><a href="https://www.facebook.com/profile.php?id=61596105778203" target="_blank" rel="noopener noreferrer">Facebook</a><a href="mailto:lal347092@gmail.com">Email</a></div>
 </div><div class="footer-bottom"><span>© 2026 Undo. Dự án website mẫu, không nhận đơn hàng thật.</span><span>Spill Less. Live More.</span></div></div></footer><div class="overlay" id="overlay"></div>
 <aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true" inert>
 <div class="drawer-head"><h2 id="drawerTitle">Giỏ hàng <span id="drawerCount">(0)</span></h2><button class="close" data-close aria-label="Đóng giỏ hàng"><!--
@@ -128,8 +130,9 @@ unicode: "eb55"
 <svg class="ui-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
   <path d="M18 6l-12 12" />
   <path d="M6 6l12 12" />
-</svg></button><div class="modal-checkout"><h2 id="confirmOrderTitle">Xác nhận đặt hàng?</h2><p>Vui lòng kiểm tra thông tin nhận hàng và tổng tiền trước khi xác nhận.</p><p id="confirmOrderTotal"></p><div class="added-actions"><button class="btn" id="confirmOrderYes" type="button">Xác nhận đặt hàng</button><button class="btn secondary" id="confirmOrderBack" type="button">Quay lại kiểm tra</button></div></div></div>
+</svg></button><div class="modal-checkout"><h2 id="confirmOrderTitle">Xác nhận đặt hàng?</h2><p>Vui lòng kiểm tra thông tin nhận hàng và tổng tiền trước khi xác nhận.</p><p id="confirmOrderPayment"></p><p id="confirmOrderTotal"></p><div class="added-actions"><button class="btn" id="confirmOrderYes" type="button">Xác nhận đặt hàng</button><button class="btn secondary" id="confirmOrderBack" type="button">Quay lại kiểm tra</button></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="store.js" defer></script>
+<script src="contact.js" defer></script>
 </body>
 </html>

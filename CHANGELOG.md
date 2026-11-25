@@ -1,5 +1,7 @@
 # Changelog
 
+- Thêm lựa chọn chuyển khoản ngân hàng, mã đơn để tra cứu, lịch sử mua hàng trong phiên tài khoản và nút liên hệ nổi trên các trang.
+
 - Đổi lại tiêu đề khối thành Thiết kế và bổ sung khối Tính năng nổi bật kèm ảnh đế giác hút và lõi inox giữ nhiệt ngay bên dưới.
 
 - Cập nhật khối Thiết kế trên trang chủ thành giới thiệu kiểu dáng và kích thước cốc (Size M, 400 ml); tạo và nhúng ảnh kich-thuoc-dang-coc.jpg với phong cách tối giản.

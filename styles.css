@@ -498,3 +498,25 @@ summary::after{flex-shrink:0}
   .features-section{padding-block:var(--space-xl)}
   .features-grid{grid-template-columns:minmax(0,1fr);gap:var(--space-lg)}
 }
+
+/* Order lookup, purchase history and shared contact links */
+.orders-page{max-width:calc(760px + 2 * var(--gutter))}
+.order-lookup{display:flex;align-items:end;flex-wrap:wrap;gap:var(--space-md);margin-block:var(--space-lg)}
+.order-lookup .field{flex:1 1 240px;margin:0;min-width:0}
+.order-lookup input{margin:0}
+.order-lookup .btn,#floatingContactPanel a{min-height:44px}
+.tracked-order{padding-block:var(--space-lg)}
+.tracked-order h2 span{display:inline-block;max-width:100%;overflow-wrap:anywhere}
+.order-history{list-style:none;padding:0;margin-block:var(--space-lg)}
+.order-history li{display:flex;justify-content:space-between;align-items:center;gap:var(--space-md);flex-wrap:wrap;padding-block:var(--space-md);border-top:1px solid var(--color-rule)}
+.order-history h2{font-family:var(--font-body);font-size:var(--text-md);overflow-wrap:anywhere}
+.order-history p{margin:0}
+.orders-page #orderHistoryEmpty a{text-decoration:underline}
+.order-error{color:var(--color-error);margin-block:var(--space-md)}
+.floating-contact,#floatingContactPanel{position:fixed;inset:auto max(var(--space-md),env(safe-area-inset-right)) max(var(--space-md),env(safe-area-inset-bottom)) auto;margin:0}
+.floating-contact{z-index:var(--z-sticky);min-height:44px}
+body.noscroll .floating-contact{display:none}
+#floatingContactPanel{bottom:calc(max(var(--space-md),env(safe-area-inset-bottom)) + 48px + var(--space-sm));min-width:144px;padding:var(--space-xs);border:1px solid var(--color-rule-2);border-radius:var(--radius-card);background:var(--color-paper);color:var(--color-ink)}
+#floatingContactPanel a{display:flex;align-items:center;padding-inline:var(--space-md);color:inherit}
+#floatingContactPanel a:hover{background:var(--color-paper-3)}
+@media(max-width:640px){.footer:has(+ .floating-contact){padding-bottom:calc(48px + 2 * var(--space-md))}}

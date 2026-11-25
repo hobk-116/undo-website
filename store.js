@@ -18,7 +18,7 @@ const pageRegions=document.querySelectorAll('body>.announce,body>header,body>.se
 function save(){try{localStorage.setItem('undo_cart',JSON.stringify(cart))}catch(e){toast('Không thể lưu giỏ hàng. Kiểm tra cài đặt lưu trữ của trình duyệt.')}}
 let toastTimeout;
 function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>$('toast').classList.remove('show'),2900)}
-function open(id){const trigger=active?returnFocus:document.activeElement;closeSearch();closeMobile();close();returnFocus=trigger;active=id;pageRegions.forEach(el=>el.inert=true);$('overlay').classList.add('open');$(id).classList.add('open');$(id).setAttribute('aria-hidden','false');$(id).inert=false;document.body.classList.add('noscroll');$(id).scrollTop=0;requestAnimationFrame(()=>{if(active!==id)return;const el=$(id).querySelector('.modal-close,.close');if(el)el.focus({preventScroll:true})})}
+function open(id){const trigger=active?returnFocus:document.activeElement;$('floatingContactPanel')?.hidePopover();closeSearch();closeMobile();close();returnFocus=trigger;active=id;pageRegions.forEach(el=>el.inert=true);$('overlay').classList.add('open');$(id).classList.add('open');$(id).setAttribute('aria-hidden','false');$(id).inert=false;document.body.classList.add('noscroll');$(id).scrollTop=0;requestAnimationFrame(()=>{if(active!==id)return;const el=$(id).querySelector('.modal-close,.close');if(el)el.focus({preventScroll:true})})}
 function close(){const wasOpen=Boolean(active);active='';pageRegions.forEach(el=>el.inert=false);$('overlay').classList.remove('open');document.querySelectorAll('.drawer,.modal').forEach(el=>{el.classList.remove('open');el.setAttribute('aria-hidden','true');el.inert=true});document.body.classList.remove('noscroll');if(wasOpen&&returnFocus?.isConnected)returnFocus.focus({preventScroll:true})}
 document.addEventListener('keydown',e=>{
  if(e.key!=='Tab'||!active)return;
@@ -59,6 +59,7 @@ function orderQuote(){
 }
 function renderCheckout(){
  if(!$('checkoutForm'))return;
+ $('checkoutForm').hidden = !$('orderResult').hidden;
  const quote=orderQuote();
  $('checkoutItems').innerHTML=orderItems();
  $('checkoutAmount').textContent=money(quote.amount);
@@ -91,27 +92,192 @@ $('menuToggle')?.addEventListener('click',()=>{closeSearch();let on=$('mobileMen
 $('newsletterForm')?.addEventListener('submit',e=>{e.preventDefault();toast('Cảm ơn bạn!');e.target.reset()});
 $('checkoutForm')?.addEventListener('input',e=>{if(e.target.setCustomValidity)e.target.setCustomValidity('')});
 let orderApproved=false;
+const paymentLabels = new Map([
+  ['cod', 'Thanh toán khi nhận hàng (COD)'],
+  ['transfer', 'Chuyển khoản ngân hàng']
+]);
 function backToCheckout(){close();$('checkoutForm').querySelector('button[type=submit]').focus({preventScroll:true})}
 $('confirmOrderBack')?.addEventListener('click',backToCheckout);
 $('confirmOrderClose')?.addEventListener('click',backToCheckout);
 $('confirmOrderYes')?.addEventListener('click',()=>{orderApproved=true;close();$('checkoutForm').requestSubmit();orderApproved=false});
 $('checkoutForm')?.addEventListener('submit',e=>{
- e.preventDefault();if(!cart.length||!e.target.reportValidity())return;
+ e.preventDefault();$('orderSaveError').hidden=true;if(!cart.length||!e.target.reportValidity())return;
  const data=new FormData(e.target);
  const name=String(data.get('name')||'').trim();
  if(!name){e.target.elements.name.setCustomValidity('Vui lòng nhập họ và tên.');e.target.elements.name.reportValidity();return;}
  const phone=String(data.get('phone')||'').trim(),address=String(data.get('address')||'').trim();
  if(!phone||address.length<5){const field=!phone?e.target.elements.phone:e.target.elements.address;field.setCustomValidity('Vui lòng nhập thông tin hợp lệ.');field.reportValidity();return;}
  const quote=orderQuote();if(!['hanoi','other'].includes(quote.region))return;
- if(!orderApproved){$('confirmOrderTotal').textContent='Tổng dự kiến: '+quote.total;open('confirmOrderModal');return;}
+ const payment = data.get('payment');
+ if (!paymentLabels.has(payment)) return;
+ if (!orderApproved) {
+   $('confirmOrderPayment').textContent = paymentLabels.get(payment);
+   $('confirmOrderTotal').textContent = 'Tổng dự kiến: ' + quote.total;
+   open('confirmOrderModal');
+   return;
+ }
+ let order;
+ try {
+   order = saveOrder(quote, payment);
+ } catch {
+   const error = $('orderSaveError');
+   error.textContent = 'Không thể lưu đơn hàng. Vui lòng kiểm tra cài đặt lưu trữ của trình duyệt và thử lại.';
+   error.hidden = false;
+   return;
+ }
  const region=quote.region==='hanoi'?'Nội thành Hà Nội':'Các khu vực còn lại';
  $('orderResult').hidden=false;$('orderResult').className='modal-alert';
- $('orderResult').innerHTML=`<p>Người nhận: <b>${escapeHtml(name)}</b><br/>Điện thoại: ${escapeHtml(phone)}<br/>Địa chỉ: ${escapeHtml(address)}<br/>Khu vực giao hàng: ${region}.</p>${data.get('email')?`<p>Email: ${escapeHtml(String(data.get('email')))}</p>`:''}${data.get('note')?`<p>Ghi chú: ${escapeHtml(String(data.get('note')))}</p>`:''}<ul class="order-items">${orderItems()}</ul><dl class="order-totals"><div><dt>Tiền sản phẩm</dt><dd>${money(quote.amount)}</dd></div><div><dt>Phí giao dự kiến</dt><dd>${quote.shipping}</dd></div><div class="order-total"><dt>Tổng dự kiến</dt><dd>${quote.total}</dd></div></dl><button type="button" class="btn small" id="continueShop">Tiếp tục mua sắm</button>`;
+ $('orderResult').innerHTML=`<p>Mã đơn hàng: <b>${order.code}</b></p><p>${paymentLabels.get(order.payment)} · ${paymentStatus(order)}</p><p>Người nhận: <b>${escapeHtml(name)}</b><br/>Điện thoại: ${escapeHtml(phone)}<br/>Địa chỉ: ${escapeHtml(address)}<br/>Khu vực giao hàng: ${region}.</p>${data.get('email')?`<p>Email: ${escapeHtml(String(data.get('email')))}</p>`:''}${data.get('note')?`<p>Ghi chú: ${escapeHtml(String(data.get('note')))}</p>`:''}<ul class="order-items">${orderItems()}</ul><dl class="order-totals"><div><dt>Tiền sản phẩm</dt><dd>${money(quote.amount)}</dd></div><div><dt>Phí giao dự kiến</dt><dd>${quote.shipping}</dd></div><div class="order-total"><dt>Tổng dự kiến</dt><dd>${quote.total}</dd></div></dl><div class="added-actions"><a class="btn small" href="${trackingLink(order.code)}">Theo dõi đơn hàng</a><button type="button" class="btn small secondary" id="continueShop">Tiếp tục mua sắm</button></div>`;
  const status=$('checkoutContent').querySelector('h1');status.id='orderStatus';status.tabIndex=-1;status.textContent='Đã xác nhận đặt hàng';document.querySelector('.checkout-page>.support-back').hidden=true;document.title='Đã xác nhận đặt hàng | UnDo';$('checkoutHelp').hidden=true;
  $('checkoutForm').hidden=true;cart=[];save();renderCart();e.target.reset();$('orderStatus').focus({preventScroll:true});$('orderStatus').scrollIntoView({block:'start',behavior:'instant'});
  $('continueShop')?.addEventListener('click',()=>{close();goShopping()});
 });
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+const historyPage = 'lich-su-mua-hang.html';
+const historyLogin = 'dang-nhap.html?next=lich-su-mua-hang';
+const returnToHistory = new URLSearchParams(location.search).get('next') === 'lich-su-mua-hang';
+const orderCodePattern = /^UNDO-[0-9A-F]{12}$/;
+const orderDate = new Intl.DateTimeFormat('vi-VN', { dateStyle: 'medium', timeStyle: 'short' });
+
+function trackingLink(code) {
+  return 'theo-doi-don-hang.html#' + code;
+}
+
+function paymentStatus(order) {
+  return order.payment === 'transfer' ? 'Chờ thanh toán' : 'Thanh toán khi nhận hàng';
+}
+
+function historyKey() {
+  const credentials = JSON.parse(sessionStorage.getItem(credentialsKey));
+  return 'undo_order_history_' + credentials.salt.join('-');
+}
+
+function historyCodes(key) {
+  const codes = JSON.parse(sessionStorage.getItem(key));
+  return Array.isArray(codes) ? codes.filter(code => orderCodePattern.test(code)) : [];
+}
+
+function saveOrder(quote, payment) {
+  const bytes = crypto.getRandomValues(new Uint8Array(6));
+  const code = 'UNDO-' + Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('').toUpperCase();
+  const order = {
+    code,
+    createdAt: Date.now(),
+    status: 'Đã đặt hàng',
+    payment,
+    amount: quote.amount,
+    shipping: quote.shipping,
+    total: quote.total,
+    items: cart.map(({ id, qty }) => {
+      const { name, vi, price } = products.find(product => product.id === id);
+      return { name, variant: vi, price, qty };
+    })
+  };
+  const key = 'undo_order_' + code;
+  localStorage.setItem(key, JSON.stringify(order));
+  try {
+    if (signedIn) {
+      const accountHistory = historyKey();
+      sessionStorage.setItem(accountHistory, JSON.stringify([code, ...historyCodes(accountHistory)]));
+    }
+  } catch (error) {
+    localStorage.removeItem(key);
+    throw error;
+  }
+  return order;
+}
+
+function readOrder(code) {
+  if (!orderCodePattern.test(code)) return null;
+  const order = read('order_' + code, null);
+  if (order?.code !== code || !paymentLabels.has(order.payment) ||
+      !Number.isFinite(order.createdAt) || Number.isNaN(new Date(order.createdAt).valueOf()) ||
+      !Number.isFinite(order.amount) || typeof order.shipping !== 'string' ||
+      typeof order.total !== 'string' || typeof order.status !== 'string' || !Array.isArray(order.items)) return null;
+  if (!order.items.every(item => item && typeof item.name === 'string' &&
+      typeof item.variant === 'string' && Number.isFinite(item.price) && Number.isInteger(item.qty))) return null;
+  return order;
+}
+
+const trackOrderForm = $('trackOrderForm');
+if (trackOrderForm) {
+  const field = $('trackingCode');
+  const message = $('trackingMessage');
+  const details = $('trackedOrder');
+
+  function showTrackedOrder(code, focusResult = false) {
+    const order = readOrder(code);
+    details.hidden = !order;
+    details.replaceChildren();
+    message.hidden = !code || Boolean(order);
+    message.textContent = message.hidden ? '' : 'Không tìm thấy đơn hàng. Kiểm tra lại mã đơn và trình duyệt đã dùng để đặt hàng.';
+    field.setAttribute('aria-invalid', String(!message.hidden));
+    if (!order) return;
+
+    const items = order.items.map(item => `<li><span>${escapeHtml(item.name)} / ${escapeHtml(item.variant)} × ${item.qty}</span><strong>${money(item.price * item.qty)}</strong></li>`).join('');
+    details.innerHTML = `
+      <h2 id="trackedOrderTitle" tabindex="-1">Đơn hàng <span>${order.code}</span></h2>
+      <p><time datetime="${new Date(order.createdAt).toISOString()}">${orderDate.format(order.createdAt)}</time></p>
+      <dl class="order-totals">
+        <div><dt>Trạng thái đơn hàng</dt><dd>${escapeHtml(order.status)}</dd></div>
+        <div><dt>Phương thức thanh toán</dt><dd>${paymentLabels.get(order.payment)}</dd></div>
+        ${order.payment === 'transfer' ? '<div><dt>Trạng thái thanh toán</dt><dd>Chờ thanh toán</dd></div>' : ''}
+      </dl>
+      <ul class="order-items" aria-label="Sản phẩm đã đặt">${items}</ul>
+      <dl class="order-totals">
+        <div><dt>Tiền sản phẩm</dt><dd>${money(order.amount)}</dd></div>
+        <div><dt>Phí giao dự kiến</dt><dd>${escapeHtml(order.shipping)}</dd></div>
+        <div class="order-total"><dt>Tổng dự kiến</dt><dd>${escapeHtml(order.total)}</dd></div>
+      </dl>`;
+    if (focusResult) $('trackedOrderTitle').focus();
+  }
+
+  function readTrackingLink() {
+    field.value = location.hash.slice(1).toUpperCase();
+    showTrackedOrder(field.value);
+  }
+
+  trackOrderForm.hidden = false;
+  trackOrderForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const code = field.value.trim().toUpperCase();
+    field.value = code;
+    history.replaceState(null, '', orderCodePattern.test(code) ? '#' + code : location.pathname);
+    showTrackedOrder(code, true);
+  });
+  field.addEventListener('input', () => {
+    field.removeAttribute('aria-invalid');
+    message.hidden = true;
+  });
+  window.addEventListener('hashchange', readTrackingLink);
+  readTrackingLink();
+}
+
+function renderOrderHistory() {
+  const list = $('orderHistory');
+  if (!list) return;
+  if (!signedIn || !profile) {
+    list.replaceChildren();
+    location.replace(historyLogin);
+    return;
+  }
+  let orders = [];
+  try {
+    orders = historyCodes(historyKey()).map(readOrder).filter(Boolean);
+  } catch {}
+  $('orderHistoryEmpty').hidden = orders.length > 0;
+  list.hidden = !orders.length;
+  list.innerHTML = orders.map(order => `
+    <li>
+      <div>
+        <h2>${order.code}</h2>
+        <p><time datetime="${new Date(order.createdAt).toISOString()}">${orderDate.format(order.createdAt)}</time></p>
+        <p>${escapeHtml(order.status)} · ${escapeHtml(order.total)}</p>
+      </div>
+      <a class="btn small secondary" href="${trackingLink(order.code)}" aria-label="Xem đơn hàng ${order.code}">Xem đơn hàng</a>
+    </li>`).join('');
+}
+
 const sessionKey='undo_sample_session';
 let signedIn=false,profile=null;
 const profileKey='undo_session_profile';
@@ -133,6 +299,12 @@ try{signedIn=sessionStorage.getItem(sessionKey)==='guest'&&!!sessionStorage.getI
 renderAccount();
 
 const credentialsKey='undo_session_credentials';
+renderOrderHistory();
+if (returnToHistory && $('accountGuest')) {
+  $('showRegister').href = 'dang-ky.html?next=lich-su-mua-hang';
+  $('registerBack').href = historyLogin;
+  if (signedIn) location.replace(historyPage);
+}
 async function passwordVerifier(password,salt){
  const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);
  const bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt:new Uint8Array(salt),iterations:600000,hash:'SHA-256'},key,256);
@@ -148,7 +320,7 @@ $('loginForm')?.addEventListener('submit',async e=>{
   const credentials=JSON.parse(sessionStorage.getItem(credentialsKey));
   const email=form.elements.email.value.trim().toLowerCase();
   if(!credentials||!profile||credentials.email!==email||await passwordVerifier(form.elements.password.value,credentials.salt)!==credentials.verifier){accountError('Email hoặc mật khẩu không đúng.');return}
-  sessionStorage.setItem(sessionKey,'guest');signedIn=true;form.reset();resetPasswords(form);renderAccount();$('accountContinue').focus({preventScroll:true});toast('Đã đăng nhập');
+  sessionStorage.setItem(sessionKey,'guest');signedIn=true;form.reset();resetPasswords(form);if(returnToHistory){location.replace(historyPage);return}renderAccount();$('accountContinue').focus({preventScroll:true});toast('Đã đăng nhập');
  }catch{accountError('Không thể đăng nhập lúc này. Vui lòng kiểm tra cài đặt trình duyệt.');}
  finally{button.disabled=false;button.textContent='Đăng nhập';}
 });
@@ -168,13 +340,13 @@ $('registerForm')?.addEventListener('submit',async e=>{
   const existing=JSON.parse(sessionStorage.getItem(credentialsKey));if(existing?.email===email){accountError('Email này đã có tài khoản. Vui lòng đăng nhập.');return}
   const salt=Array.from(crypto.getRandomValues(new Uint8Array(16))),verifier=await passwordVerifier(password,salt),next={name,email,phone};
   sessionStorage.setItem(credentialsKey,JSON.stringify({email,salt,verifier}));sessionStorage.setItem(profileKey,JSON.stringify(next));sessionStorage.setItem(sessionKey,'guest');
-  profile=next;signedIn=true;form.reset();resetPasswords(form);renderAccount();$('accountContinue').focus({preventScroll:true});toast('Đã tạo tài khoản');
+  profile=next;signedIn=true;form.reset();resetPasswords(form);if(returnToHistory){location.replace(historyPage);return}renderAccount();$('accountContinue').focus({preventScroll:true});toast('Đã tạo tài khoản');
  }catch{accountError('Không thể tạo tài khoản lúc này. Vui lòng kiểm tra cài đặt trình duyệt.');}
  finally{button.disabled=false;button.textContent='Tạo tài khoản';}
 });
 for(const form of [$('registerForm'),$('loginForm')])form?.addEventListener('input',e=>{if(e.target.setCustomValidity)e.target.setCustomValidity('');if(form.id==='registerForm'&&e.target.name==='password')form.elements.confirmPassword.setCustomValidity('');$('accountError').hidden=true;});
 $('accountContinue')?.addEventListener('click',()=>{location.href='bo-suu-tap.html'});
-window.addEventListener('pageshow',event=>{if(!event.persisted)return;const saved=read('cart',[]);cart=Array.isArray(saved)?saved.filter(it=>products.some(p=>p.id===it.id)&&Number.isInteger(it.qty)&&it.qty>0&&it.qty<=99):[];try{signedIn=sessionStorage.getItem(sessionKey)==='guest'&&!!sessionStorage.getItem('undo_session_credentials');const value=JSON.parse(sessionStorage.getItem(profileKey));profile=value&&typeof value.name==='string'&&typeof value.email==='string'&&value.name.length<=100&&value.email.length<=254?value:null}catch{}renderAccount();renderCart();renderCheckout()});
+window.addEventListener('pageshow',event=>{if(!event.persisted)return;const saved=read('cart',[]);cart=Array.isArray(saved)?saved.filter(it=>products.some(p=>p.id===it.id)&&Number.isInteger(it.qty)&&it.qty>0&&it.qty<=99):[];try{signedIn=sessionStorage.getItem(sessionKey)==='guest'&&!!sessionStorage.getItem('undo_session_credentials');const value=JSON.parse(sessionStorage.getItem(profileKey));profile=value&&typeof value.name==='string'&&typeof value.email==='string'&&value.name.length<=100&&value.email.length<=254?value:null}catch{}renderAccount();renderOrderHistory();renderCart();renderCheckout()});
 window.addEventListener('storage',e=>{if(e.key!=='undo_cart'&&e.key!==null)return;const saved=read('cart',[]);cart=Array.isArray(saved)?saved.filter(it=>products.some(p=>p.id===it.id)&&Number.isInteger(it.qty)&&it.qty>0&&it.qty<=99):[];if(active==='confirmOrderModal')backToCheckout();renderCart();renderCheckout()});
 renderProducts();renderCart();renderCheckout();
 if($('productModalContent'))viewProduct(new URLSearchParams(location.search).get('id')||'p1v1');

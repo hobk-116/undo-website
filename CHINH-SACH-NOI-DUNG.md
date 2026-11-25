@@ -75,7 +75,7 @@ Chọn đặt hàng để mở biểu mẫu, chọn mã lượt thử và khu v�
 
 ## Giá và phương thức thanh toán
 
-Giá hiển thị tính bằng Việt Nam Đồng. Tạm tính trong giỏ là tổng giá trị sản phẩm, chưa phải số tiền đã thanh toán. Biểu mẫu chỉ hiển thị phương thức thanh toán khi nhận hàng (COD) để minh họa và không thực hiện thu tiền. Không chuyển khoản hoặc cung cấp thông tin thẻ khi dùng website.
+Giá hiển thị tính bằng Việt Nam Đồng. Tạm tính trong giỏ là tổng giá trị sản phẩm, chưa phải số tiền đã thanh toán. Biểu mẫu cho chọn thanh toán khi nhận hàng (COD) hoặc chuyển khoản ngân hàng. Lựa chọn chuyển khoản được ghi nhận với trạng thái Chờ thanh toán. Website không thực hiện thu tiền. Không chuyển khoản hoặc cung cấp thông tin thẻ khi dùng website.
 
 ## Chi phí giao hàng dự kiến
 
@@ -83,7 +83,7 @@ Checkout hiển thị tiền sản phẩm, phí giao hàng và tổng dự kiế
 
 ## Sửa hoặc hủy đơn
 
-Trước khi xác nhận, bạn có thể đóng biểu mẫu để sửa phân loại, số lượng hoặc xóa sản phẩm trong giỏ. Sau khi xác nhận, bạn có thể bắt đầu một lượt trải nghiệm mới; website hiện không hỗ trợ sửa, theo dõi hoặc hủy đơn trực tuyến.
+Trước khi xác nhận, bạn có thể đóng biểu mẫu để sửa phân loại, số lượng hoặc xóa sản phẩm trong giỏ. Sau khi xác nhận, bạn có thể tra cứu bằng mã đơn trên cùng trình duyệt. Trang tra cứu chỉ hiển thị thông tin đã lưu trong trình duyệt. Website không hỗ trợ sửa hoặc hủy đơn trực tuyến.
 
 UnDo tiếp nhận yêu cầu sửa hoặc hủy miễn phí khi chưa bàn giao kiện hàng cho đơn vị vận chuyển. Nếu kiện đã gửi, UnDo kiểm tra khả năng điều chỉnh với đơn vị giao hàng và thông báo trước mọi chi phí phát sinh. Đơn chỉ được hủy khi UnDo xác nhận.
 
@@ -135,7 +135,7 @@ Website sử dụng Vercel làm môi trường vận hành. Khi truy cập, trì
 
 ## Cookie và theo dõi
 
-Website không tích hợp cookie quảng cáo hoặc công cụ phân tích hành vi. Giỏ hàng sử dụng bộ nhớ trình duyệt.
+Website không tích hợp cookie quảng cáo hoặc công cụ phân tích hành vi. Giỏ hàng và bản tóm tắt đơn dùng bộ nhớ trình duyệt. Lịch sử mua hàng gắn với phiên tài khoản trong tab.
 
 ## Thay đổi chính sách
 
