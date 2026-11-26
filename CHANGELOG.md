@@ -1,5 +1,9 @@
 # Changelog
 
+- Thiết kế lại bố cục trang chi tiết sản phẩm theo 3 tầng: thêm dải ảnh thu nhỏ các phân loại, cụm mua hàng gọn, bảng thông số tiêu chuẩn, hướng dẫn sử dụng gấp gọn và khối các dòng cốc khác.
+
+- Bổ sung mô tả chi tiết dài 200 chữ cho 6 dòng sản phẩm trên trang chi tiết sản phẩm.
+
 - Thêm lựa chọn chuyển khoản ngân hàng, mã đơn để tra cứu, lịch sử mua hàng trong phiên tài khoản và nút liên hệ nổi trên các trang.
 
 - Đổi lại tiêu đề khối thành Thiết kế và bổ sung khối Tính năng nổi bật kèm ảnh đế giác hút và lõi inox giữ nhiệt ngay bên dưới.
