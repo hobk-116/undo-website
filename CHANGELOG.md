@@ -1,5 +1,7 @@
 # Changelog
 
+- Bỏ nút "Chọn phân loại" và căn lại khoảng cách dòng số phân loại ở cả lưới sản phẩm chính lẫn khối "Các dòng cốc khác của UnDo".
+
 - Thiết kế lại bố cục trang chi tiết sản phẩm theo 3 tầng: thêm dải ảnh thu nhỏ các phân loại, cụm mua hàng gọn, bảng thông số tiêu chuẩn, hướng dẫn sử dụng gấp gọn và khối các dòng cốc khác.
 
 - Bổ sung mô tả chi tiết dài 200 chữ cho 6 dòng sản phẩm trên trang chi tiết sản phẩm.
