@@ -520,3 +520,46 @@ body.noscroll .floating-contact{display:none}
 #floatingContactPanel a{display:flex;align-items:center;padding-inline:var(--space-md);color:inherit}
 #floatingContactPanel a:hover{background:var(--color-paper-3)}
 @media(max-width:640px){.footer:has(+ .floating-contact){padding-bottom:calc(48px + 2 * var(--space-md))}}
+
+/* Product detail page layout: gallery, purchase controls, editorial specs and related models */
+.product-page .modal-product{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:var(--space-xl);align-items:start}
+.product-page .modal-details{padding:0}
+.product-page h1{font-size:var(--text-section);line-height:1.15;margin-bottom:var(--space-sm)}
+.product-gallery{position:sticky;top:calc(64px + var(--space-md));min-width:0}
+.product-gallery>img{display:block;width:100%;height:auto;aspect-ratio:800/920;object-fit:contain;background:var(--color-paper-2);border-radius:var(--radius-card)}
+.product-gallery>img[src*="/Gaming_Edition_"]{background:var(--product-gaming-background)}
+.product-thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-sm);margin-top:var(--space-md)}
+.product-thumb{display:block;width:100%;min-height:44px;aspect-ratio:1/1;padding:0;border:1px solid var(--color-rule);border-radius:var(--radius-card);background:var(--color-paper-2);overflow:hidden}
+.product-thumb:hover{border-color:var(--color-rule-2)}
+.product-thumb[aria-pressed="true"]{border-color:var(--green);outline:2px solid var(--green);outline-offset:2px}
+.product-thumb img{display:block;width:100%;height:100%;object-fit:contain}
+.product-thumb img[src*="/Gaming_Edition_"]{background:var(--product-gaming-background)}
+.product-buy-group{margin-top:var(--space-lg);padding-top:var(--space-lg);border-top:1px solid var(--color-rule)}
+.product-purchase{display:flex;flex-wrap:wrap;align-items:stretch;gap:var(--space-sm);margin-top:var(--space-sm)}
+.product-purchase .qty{margin:0}
+.product-purchase .btn{flex:1 1 200px;width:auto;margin-top:0}
+.product-promises{list-style:none;padding:var(--space-lg) 0 0;margin:var(--space-lg) 0 0;border-top:1px solid var(--color-rule);display:grid;gap:var(--space-xs);font-size:var(--text-sm);color:var(--color-ink-2)}
+.product-promises li{position:relative;padding-left:var(--space-md)}
+.product-promises li::before{content:'';position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:var(--radius-pill);background:var(--green)}
+.product-editorial{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:var(--space-2xl);margin-top:var(--space-2xl);padding-top:var(--space-2xl);border-top:1px solid var(--color-rule);align-items:start}
+.product-editorial h2,.product-related h2{font-size:var(--text-2xl);margin-bottom:var(--space-md)}
+.product-about .product-description{max-width:62ch;line-height:1.65;margin-block:0 var(--space-lg)}
+.product-about .product-help summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:var(--space-md)}
+.product-about .product-help summary::-webkit-details-marker{display:none}
+.product-about .product-help summary::after{content:'+';font-size:var(--text-lg);flex-shrink:0}
+.product-about .product-help[open] summary::after{content:'−'}
+.product-about .product-help a{text-decoration:underline;text-underline-offset:4px}
+.spec-list{margin:0;border-top:1px solid var(--color-rule)}
+.spec-list>div{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:var(--space-md);padding-block:var(--space-sm);border-bottom:1px solid var(--color-rule);font-size:var(--text-sm)}
+.spec-list dt{color:var(--color-muted);font-weight:500}
+.spec-list dd{margin:0;color:var(--color-ink)}
+.product-related{margin-top:var(--space-2xl);padding-top:var(--space-2xl);border-top:1px solid var(--color-rule)}
+@media(max-width:900px){
+ .product-page .modal-product{grid-template-columns:minmax(0,1fr);gap:var(--space-lg)}
+ .product-gallery{position:static}
+ .product-editorial{grid-template-columns:minmax(0,1fr);gap:var(--space-xl);margin-top:var(--space-xl);padding-top:var(--space-xl)}
+}
+@media(max-width:640px){
+ .product-thumbs{gap:var(--space-xs)}
+ .spec-list>div{grid-template-columns:minmax(0,1fr);gap:var(--space-2xs)}
+}
